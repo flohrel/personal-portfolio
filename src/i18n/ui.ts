@@ -21,10 +21,17 @@ export const ui: { [key: string]: { [key: string]: string } } = {
 } as const;
 
 export const routes: { [key: string]: { [key: string]: string } } = {
+  en: {
+    home: 'home',
+    about: 'about',
+    projects: 'projects',
+    blog: 'blog',
+    contact: 'contact',
+  },
   fr: {
-    home: 'accueil',
-    about: 'a-propos',
-    projects: 'projets',
+    home: 'home',
+    about: 'about',
+    projects: 'projects',
     blog: 'blog',
     contact: 'contact',
   },

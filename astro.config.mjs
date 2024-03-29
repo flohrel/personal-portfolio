@@ -13,5 +13,5 @@ export default defineConfig({
   },
   integrations: [
     tailwind({ nesting: true }),
-    icon({ include: { "fa6-brands": ["github", "linkedin"], }, }),]
+    icon({ include: { "fa6-brands": ["github", "linkedin"], "material-symbols": ["menu-open"] } }),]
 });

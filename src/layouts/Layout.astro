@@ -1,6 +1,6 @@
 ---
-import Header from '@/components/Header.astro';
 import LanguagePicker from '@/components/LanguagePicker.astro';
+import Sidebar from '@/components/Sidebar.astro';
 import '@fontsource-variable/josefin-sans';
 import '@fontsource-variable/josefin-slab';
 import { SEO } from 'astro-seo';
@@ -16,7 +16,7 @@ const { title } = Astro.props;
 ---
 
 <!doctype html>
-<html lang={lang}>
+<html lang={lang as string}>
   <head>
     <SEO
       title={title}
@@ -67,25 +67,38 @@ const { title } = Astro.props;
       </div>
       <div class="fixed -z-10 frame bg-frame"></div>
     </div>
+    <div id="content-frame" class="absolute frame sidebar--collapse">
+      <Sidebar />
+      <main
+        class="absolute p-4 sm:p-6 md:p-8 lg:p-10 xl:p-12 2xl:p-14 top-1/2 z-40 [transition:width_500ms_ease-in-out,margin_500ms_ease-in-out] ml-[min(35%,_400px)] w-auto"
+      >
+        <slot />
+      </main>
+    </div>
     <LanguagePicker />
-    <Header />
-    <slot />
     <style is:global>
       @tailwind base;
       @tailwind components;
+      @tailwind utilities;
 
       @layer base {
+        *,
+        *::before,
+        *::after {
+          box-sizing: border-box;
+          /* border: 1px solid #d7ffff; */
+        }
         body {
           @apply bg-primary text-mint;
         }
         a {
-          @apply hover:text-mintHover;
+          @apply hover:text-mintHover transition-colors duration-200 ease-in-out;
         }
         h1 {
-          @apply font-slab font-semibold text-xl md:text-2xl xl:text-3xl;
+          @apply font-slab font-bold text-xl md:text-2xl xl:text-3xl;
         }
         h2 {
-          @apply font-sans font-semibold text-lg md:text-xl xl:text-2xl;
+          @apply font-sans font-light text-lg md:text-xl xl:text-2xl;
         }
       }
 
@@ -98,6 +111,30 @@ const { title } = Astro.props;
         }
         .mask {
           @apply fixed left-0 w-full h-4 sm:h-6 md:h-8 lg:h-10 xl:h-12 2xl:h-14 bg-primary/5 backdrop-blur-[2px] z-50;
+        }
+      }
+
+      @layer utilities {
+        .x-collapse {
+          @apply w-0 !important;
+        }
+
+        div#content-frame.sidebar--collapse {
+          & header {
+            @apply max-md:x-collapse;
+
+            & button#sidebar-btn {
+              @apply max-md:left-1/3;
+            }
+
+            & nav li.selected div {
+              @apply x-collapse;
+            }
+          }
+
+          & main {
+            @apply max-md:w-[90%] max-md:ml-[5%];
+          }
         }
       }
     </style>
