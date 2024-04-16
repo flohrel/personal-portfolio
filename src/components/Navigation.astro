@@ -12,34 +12,34 @@ const t = useTranslations(lang);
 const translatePath = useTranslatedPath(lang);
 ---
 
-<nav class="p-4 sm:p-6 md:p-8 lg:p-10 xl:p-12 2xl:p-14 self-stretch">
+<nav class="p-4 sm:p-6 md:p-8 lg:p-10 xl:p-12 2xl:p-14 self-stretch z-50">
   <ul id="nav-list">
-    <li id="home" class={route === undefined ? 'selected' : ''}>
-      <div></div>
-      <a class="whitespace-nowrap" href={translatePath('/')}>
+    <li class={route === undefined ? 'selected' : ''}>
+      <div class="nav__selector"></div>
+      <a class="nav__link" href={translatePath('/')}>
         {t('nav.home')}
       </a>
     </li>
-    <li id="about" class={route === 'about' ? 'selected' : ''}>
-      <div></div>
-      <a class="whitespace-nowrap" href={translatePath('/about')}>
+    <li class={route === 'about' ? 'selected' : ''}>
+      <div class="nav__selector"></div>
+      <a class="nav__link" href={translatePath('/about')}>
         {t('nav.about')}
       </a>
     </li>
-    <li id="projects" class={route === 'projects' ? 'selected' : ''}>
-      <div></div>
-      <a class="whitespace-nowrap" href={translatePath('/projects')}>
+    <li class={route === 'projects' ? 'selected' : ''}>
+      <div class="nav__selector"></div>
+      <a class="nav__link" href={translatePath('/projects')}>
         {t('nav.projects')}
       </a>
     </li>
     <!-- <li>
-        <a class="whitespace-nowrap" href={translatePath('/blog/')}
+        <a class="nav__link" href={translatePath('/blog/')}
           >{t('nav.blog')}</a
         >
       </li> -->
-    <li id="contact" class={route === 'contact' ? 'selected' : ''}>
-      <div></div>
-      <a class="whitespace-nowrap" href={translatePath('/contact')}>
+    <li class={route === 'contact' ? 'selected' : ''}>
+      <div class="nav__selector"></div>
+      <a class="nav__link" href={translatePath('/contact')}>
         {t('nav.contact')}
       </a>
     </li>
@@ -47,11 +47,10 @@ const translatePath = useTranslatedPath(lang);
 </nav>
 
 <style>
-  @tailwind base;
   @tailwind components;
   @tailwind utilities;
 
-  @layer base {
+  @layer components {
     nav {
       @apply font-extralight text-lg md:text-xl xl:text-2xl;
 
@@ -60,19 +59,17 @@ const translatePath = useTranslatedPath(lang);
       }
 
       & div {
-        @apply absolute left-0 bg-mintHover [transition:width_300ms_ease-in-out] h-7 xl:h-8 -translate-y-1;
+        @apply absolute left-[1px] bg-mintHover [transition:width_300ms_ease-in-out] h-7 xl:h-8 -translate-y-1 max-md:w-0 md:w-4 lg:w-5 xl:w-6 2xl:w-7;
       }
     }
-  }
 
-  @layer components {
     li.selected {
       & a {
         @apply font-bold pointer-events-none;
       }
 
       & div {
-        @apply bg-mint w-2 sm:w-3 md:w-4 lg:w-5 xl:w-6 2xl:w-7;
+        @apply bg-mint;
       }
     }
 
@@ -84,17 +81,8 @@ const translatePath = useTranslatedPath(lang);
   }
 
   @layer utilities {
-    li.nav__item--hover {
-      & div {
-        @apply w-2 sm:w-3 md:w-4 lg:w-5 xl:w-6 2xl:w-7;
-      }
-
-      & a {
-        @apply font-bold;
-      }
-    }
-    .x-collapse {
-      @apply w-0 !important;
+    .nav__selector--toggle {
+      @apply w-2 sm:w-3 md:w-4 lg:w-5 xl:w-6 2xl:w-7 !important;
     }
   }
 </style>
@@ -108,14 +96,14 @@ const translatePath = useTranslatedPath(lang);
     for (const i of items) {
       i.children[1].addEventListener('mouseenter', (e) => {
         if (i !== selected) {
-          i.classList.toggle('nav__item--hover');
-          selected?.children[0].classList.add('x-collapse');
+          i.children[0].classList.toggle('nav__selector--toggle');
+          selected?.children[0].classList.remove('nav__selector--toggle');
         }
       });
       i.children[1].addEventListener('mouseleave', (e) => {
         if (i !== selected) {
-          i.classList.toggle('nav__item--hover');
-          selected?.children[0].classList.remove('x-collapse');
+          i.children[0].classList.toggle('nav__selector--toggle');
+          selected?.children[0].classList.add('nav__selector--toggle');
         }
       });
     }

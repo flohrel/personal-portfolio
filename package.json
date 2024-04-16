@@ -25,9 +25,13 @@
     "@iconify-json/fa6-brands": "^1.1.18",
     "@iconify-json/material-symbols": "^1.1.76",
     "@typescript-eslint/parser": "^7.2.0",
+    "autoprefixer": "^10.4.19",
     "eslint": "^8.57.0",
     "eslint-config-prettier": "^9.1.0",
     "eslint-plugin-astro": "^0.31.4",
     "eslint-plugin-jsx-a11y": "^6.8.0"
-  }
+  },
+  "browserslist": [
+    "defaults"
+  ]
 }
