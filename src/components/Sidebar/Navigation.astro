@@ -4,7 +4,7 @@ import {
   getRouteFromUrl,
   useTranslatedPath,
   useTranslations,
-} from '../i18n/utils';
+} from '../../i18n/utils';
 
 const route = getRouteFromUrl(Astro.url);
 const lang = getLangFromUrl(Astro.url);
@@ -12,7 +12,9 @@ const t = useTranslations(lang);
 const translatePath = useTranslatedPath(lang);
 ---
 
-<nav class="p-4 sm:p-6 md:p-8 lg:p-10 xl:p-12 2xl:p-14 self-stretch z-50">
+<nav
+  class="p-4 sm:p-6 md:p-8 lg:p-10 xl:p-12 2xl:p-14 self-stretch z-50 [transition:transform_400ms_ease-in-out] max-md:-translate-x-40 group-[.sidebar--toggle]/frame-content:max-md:translate-x-0"
+>
   <ul id="nav-list">
     <li class={route === undefined ? 'selected' : ''}>
       <div class="nav__selector"></div>
@@ -59,13 +61,13 @@ const translatePath = useTranslatedPath(lang);
       }
 
       & div {
-        @apply absolute left-[1px] bg-mintHover [transition:width_300ms_ease-in-out] h-7 xl:h-8 -translate-y-1 max-md:w-0 md:w-4 lg:w-5 xl:w-6 2xl:w-7;
+        @apply absolute left-[1px] bg-mintHover [transition:width_300ms_ease-in-out] h-7 xl:h-8 -translate-y-1;
       }
     }
 
     li.selected {
       & a {
-        @apply font-bold pointer-events-none;
+        @apply font-bold pointer-events-none max-md:w-0 md:w-4 lg:w-5 xl:w-6 2xl:w-7;
       }
 
       & div {
