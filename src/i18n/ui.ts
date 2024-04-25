@@ -12,11 +12,13 @@ export const ui: { [key: string]: { [key: string]: string } } = {
     'nav.projects': 'Projects',
     'nav.blog': 'Blog',
     'nav.contact': 'Contact',
+    jobTitle: 'Developer',
   },
   fr: {
     'nav.home': 'Accueil',
     'nav.about': 'À propos',
     'nav.projects': 'Projets',
+    jobTitle: 'Développeur',
   },
 } as const;
 
@@ -34,6 +36,15 @@ export const routes: { [key: string]: { [key: string]: string } } = {
     projects: 'projects',
     blog: 'blog',
     contact: 'contact',
+  },
+};
+
+export const other: { [key: string]: { [key: string]: string } } = {
+  en: {
+    jobTitle: 'Web Developer',
+  },
+  fr: {
+    jobTitle: 'Développeur Web',
   },
 };
 
