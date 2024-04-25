@@ -17,20 +17,36 @@ const translatePath = useTranslatedPath(lang);
 >
   <ul id="nav-list">
     <li class={route === undefined ? 'selected' : ''}>
-      <div class="nav__selector"></div>
-      <a class="nav__link" href={translatePath('/')}>
+      <div
+        class={'nav__selector' +
+          (route === undefined ? ' nav__selector--toggle' : '')}
+      >
+      </div>
+      <a class="nav__link" href={translatePath('/')} data-astro-prefetch>
         {t('nav.home')}
       </a>
     </li>
     <li class={route === 'about' ? 'selected' : ''}>
-      <div class="nav__selector"></div>
-      <a class="nav__link" href={translatePath('/about')}>
+      <div
+        class={'nav__selector' +
+          (route === 'about' ? ' nav__selector--toggle' : '')}
+      >
+      </div>
+      <a class="nav__link" href={translatePath('/about')} data-astro-prefetch>
         {t('nav.about')}
       </a>
     </li>
     <li class={route === 'projects' ? 'selected' : ''}>
-      <div class="nav__selector"></div>
-      <a class="nav__link" href={translatePath('/projects')}>
+      <div
+        class={'nav__selector' +
+          (route === 'projects' ? ' nav__selector--toggle' : '')}
+      >
+      </div>
+      <a
+        class="nav__link"
+        href={translatePath('/projects')}
+        data-astro-prefetch
+      >
         {t('nav.projects')}
       </a>
     </li>
@@ -39,12 +55,16 @@ const translatePath = useTranslatedPath(lang);
           >{t('nav.blog')}</a
         >
       </li> -->
-    <li class={route === 'contact' ? 'selected' : ''}>
-      <div class="nav__selector"></div>
+    <!-- <li class={route === 'contact' ? 'selected' : ''}>
+      <div
+        class={'nav__selector' +
+          (route === 'contact' ? ' nav__selector--toggle' : '')}
+      >
+      </div>
       <a class="nav__link" href={translatePath('/contact')}>
         {t('nav.contact')}
       </a>
-    </li>
+    </li> -->
   </ul>
 </nav>
 
@@ -67,11 +87,11 @@ const translatePath = useTranslatedPath(lang);
 
     li.selected {
       & a {
-        @apply font-bold pointer-events-none max-md:w-0 md:w-4 lg:w-5 xl:w-6 2xl:w-7;
+        @apply font-bold pointer-events-none;
       }
 
       & div {
-        @apply bg-mint;
+        @apply bg-mint w-0;
       }
     }
 
@@ -90,24 +110,26 @@ const translatePath = useTranslatedPath(lang);
 </style>
 
 <script>
-  const nav = document.getElementById('nav-list');
-  const items = nav?.children;
-  const selected = document.querySelector('li.selected');
+  document.addEventListener('astro:page-load', () => {
+    const nav = document.getElementById('nav-list');
+    const items = nav?.children;
+    const selected = document.querySelector('.nav__selector--toggle');
 
-  if (items) {
-    for (const i of items) {
-      i.children[1].addEventListener('mouseenter', (e) => {
-        if (i !== selected) {
-          i.children[0].classList.toggle('nav__selector--toggle');
-          selected?.children[0].classList.remove('nav__selector--toggle');
-        }
-      });
-      i.children[1].addEventListener('mouseleave', (e) => {
-        if (i !== selected) {
-          i.children[0].classList.toggle('nav__selector--toggle');
-          selected?.children[0].classList.add('nav__selector--toggle');
-        }
-      });
+    if (items) {
+      for (const i of items) {
+        i.children[1].addEventListener('mouseenter', (e) => {
+          if (i !== selected) {
+            i.children[0].classList.toggle('nav__selector--toggle');
+            selected?.classList.remove('nav__selector--toggle');
+          }
+        });
+        i.children[1].addEventListener('mouseleave', (e) => {
+          if (i !== selected) {
+            i.children[0].classList.toggle('nav__selector--toggle');
+            selected?.classList.add('nav__selector--toggle');
+          }
+        });
+      }
     }
-  }
+  });
 </script>
