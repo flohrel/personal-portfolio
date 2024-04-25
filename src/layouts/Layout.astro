@@ -4,6 +4,7 @@ import Sidebar from '@/components/Sidebar/Sidebar.astro';
 import '@fontsource-variable/josefin-sans';
 import '@fontsource-variable/josefin-slab';
 import { SEO } from 'astro-seo';
+import ViewTransitions from 'astro/components/ViewTransitions.astro';
 import { getLangFromUrl } from '../i18n/utils';
 
 const lang = getLangFromUrl(Astro.url);
@@ -45,8 +46,11 @@ const { title } = Astro.props;
         ],
       }}
     />
+    <ViewTransitions />
   </head>
-  <body class="absolute h-full w-full">
+  <body
+    class="absolute h-full w-full bg-frame text-mint selection:bg-selection"
+  >
     <div id="overlay" class="block fixed inset-0 bg-overlay z-30"></div>
     <div id="mask" class="mask top-0"></div>
     <div id="mask" class="mask bottom-0"></div>
@@ -73,7 +77,7 @@ const { title } = Astro.props;
     >
       <Sidebar />
       <main
-        class="absolute p-6 md:p-8 lg:p-10 xl:p-12 2xl:p-14 top-1/2 z-40 [transition:width_500ms_ease-in-out,margin_500ms_ease-in-out] md:ml-[min(35%,_400px)] w-auto"
+        class="absolute frame p-6 md:p-8 lg:p-10 xl:p-12 2xl:p-14 z-40 [transition:width_300ms_ease-in-out,margin_300ms_ease-in-out,opacity_500ms_ease-in-out,transform_500ms_ease-in-out] md:ml-[min(35%,_20rem)] w-auto top-1/2"
       >
         <slot />
       </main>
@@ -91,20 +95,28 @@ const { title } = Astro.props;
           box-sizing: content-box;
           /*border: 1px solid #d7ffff;*/
         }
-        body {
-          @apply bg-frame text-mint;
-        }
         a {
           @apply hover:text-mintHover transition-colors duration-200 ease-in-out;
         }
         h1 {
-          @apply font-slab font-bold text-xl md:text-2xl xl:text-3xl;
+          @apply font-sans font-semibold text-3xl md:text-4xl xl:text-5xl mb-1 md:mb-2 xl:mb-3 text-right;
         }
         h2 {
-          @apply font-sans font-normal text-lg md:text-xl xl:text-2xl;
+          @apply font-sans font-medium text-lg md:text-xl xl:text-2xl;
         }
         p {
-          @apply font-sans font-light text-base md:text-lg xl:text-xl;
+          @apply font-slab font-normal text-base md:text-lg xl:text-xl mb-4;
+        }
+        html {
+          -ms-overflow-style: none;
+          scrollbar-width: none;
+          overflow-y: scroll;
+          &::-webkit-scrollbar {
+            display: none;
+          }
+        }
+        section {
+          @apply pb-32;
         }
       }
 
