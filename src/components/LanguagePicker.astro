@@ -13,34 +13,20 @@ const t = useTranslations(currLang);
 const translatePath = useTranslatedPath(currLang);
 ---
 
-<div class="absolute h-full w-6 md:w-8 lg:w-10 xl:w-12 2xl:w-14 left-0 top-0">
-  <div
-    class="fixed flex gap-2 z-50 bottom-2 left-1 -rotate-90 origin-top-left 2xl:left-6 2xl:bottom-7 xl:left-4 xl:bottom-5 lg:left-3 lg:bottom-4 md:left-2 md:bottom-3"
-  >
-    {
-      Object.entries(languages).map(([lang]) => (
-        <>
-          <a
-            class={currLang === lang ? 'checked' : 'unchecked'}
-            href={translatePath(`/${route ? route : ''}`, lang)}
-          >
-            {lang.toUpperCase()}
-          </a>
-        </>
-      ))
-    }
-  </div>
+<div class="fixed flex gap-2 z-50 -right-3 top-6 rotate-90 origin-bottom">
+  {
+    Object.entries(languages).map(([lang]) => (
+      <>
+        <a
+          class={currLang === lang ? 'checked' : 'unchecked'}
+          href={translatePath(`/${route ? route : ''}`, lang)}
+        >
+          {lang.toUpperCase()}
+        </a>
+      </>
+    ))
+  }
 </div>
-
-<script>
-  const buttons = document.querySelectorAll('button');
-
-  buttons.forEach((button) => {
-    button.addEventListener('click', () => {
-      // alert('Button was clicked!');
-    });
-  });
-</script>
 
 <style>
   @tailwind components;

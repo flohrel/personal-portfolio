@@ -9,11 +9,11 @@ const t = useTranslations(lang);
 ---
 
 <header
-  class="fixed flex inset-[25px] md:inset-[33px] lg:inset-[41px] xl:inset-[49px] 2xl:inset-[57px] max-md:w-0 md:w-1/3 max-w-80 group-[.sidebar--toggle]/frame-content:max-md:w-[max(33.333%,_15rem)] items-center z-50 [transition:width_300ms_ease-in-out]"
+  class="fixed h-dvh flex max-md:w-0 md:w-1/3 max-w-80 group-[.sidebar--toggle]/frame-content:max-md:w-[max(25%,_15rem)] items-center z-50 [transition:width_300ms_ease-in-out]"
 >
   <div
     id="sidebar"
-    class="relative h-full w-full group-[.sidebar--toggle]/frame-content:max-md:shadow-sidebar max-md:bg-frame/90 max-md:backdrop-blur-[8px] max-md:[transition:box-shadow_100ms_ease-in-out,background-color_100ms_ease-in-out_300ms,backdrop-filter_100ms_ease-in-out_300ms] group-[.sidebar--toggle]/frame-content:max-md:[transition:background-color_100ms_ease-in-out_300ms]"
+    class="relative h-full w-full group-[.sidebar--toggle]/frame-content:max-md:shadow-sidebar max-md:bg-frame max-md:backdrop-blur-[8px] max-md:[transition:box-shadow_100ms_ease-in-out,background-color_100ms_ease-in-out_300ms,backdrop-filter_100ms_ease-in-out_300ms] group-[.sidebar--toggle]/frame-content:max-md:[transition:background-color_100ms_ease-in-out_300ms]"
   >
     <div
       class="absolute h-full w-full transition-opacity duration-100 delay-300 md:opacity-0 max-md:opacity-100 max-md:bg-overlay"
@@ -44,7 +44,7 @@ const t = useTranslations(lang);
   <button
     id="sidebar-toggle-btn"
     aria-label="Toggle sidebar menu"
-    class="w-6 h-6 -translate-x-3 inset-[inherit] text-mint hover:text-mintHover z-50 md:x-collapse md:[transition:width_300ms_ease-in-out] max-md:[transition:width_300ms_ease-in-out_300ms,color_100ms_ease-in-out,background-color_300ms,backdrop-filter_300ms,box-shadow_100ms_ease-in-out] bg-frame/30 backdrop-blur-[4px] group-[.sidebar--toggle]/frame-content:max-md:shadow-sidebar"
+    class="w-6 h-6 text-mint hover:text-mintHover z-50 md:x-collapse md:[transition:width_300ms_ease-in-out] max-md:[transition:width_300ms_ease-in-out_300ms,color_100ms_ease-in-out,background-color_300ms,backdrop-filter_300ms,box-shadow_100ms_ease-in-out] bg-frame/30 backdrop-blur-[4px] group-[.sidebar--toggle]/frame-content:max-md:shadow-sidebar"
   >
     <div
       class="w-6 h-6 md:x-collapse md:[transition:width_300ms_ease-in-out] max-md:[transition:width_300ms_ease-in-out_300ms]"

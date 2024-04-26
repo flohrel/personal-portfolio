@@ -48,36 +48,15 @@ const { title } = Astro.props;
     />
     <ViewTransitions />
   </head>
-  <body
-    class="absolute h-full w-full bg-frame text-mint selection:bg-selection"
-  >
-    <div id="overlay" class="block fixed inset-0 bg-overlay z-30"></div>
-    <div id="mask" class="mask top-0"></div>
-    <div id="mask" class="mask bottom-0"></div>
-    <div id="frame" class="fixed frame z-20">
-      <div id="frame_line-top" class="frame_line left-0 top-0 w-full h-[1px]">
-      </div>
-      <div
-        id="frame_line-bot"
-        class="frame_line left-0 bottom-0 w-full h-[1px]"
-      >
-      </div>
-      <div id="frame_line-left" class="frame_line left-0 top-0 w-[1px] h-full">
-      </div>
-      <div
-        id="frame_line-right"
-        class="frame_line right-0 top-0 w-[1px] h-full"
-      >
-      </div>
-      <div class="fixed -z-10 frame bg-content"></div>
-    </div>
+  <body class="h-dvh w-full bg-content text-mint selection:bg-selection">
+    <div id="overlay" class="fixed h-lvh w-full inset-0 bg-overlay z-30"></div>
     <div
       id="frame-content"
-      class="group/frame-content md:sidebar--toggle absolute frame"
+      class="relative group/frame-content md:sidebar--toggle h-screen w-full z-50"
     >
       <Sidebar />
       <main
-        class="absolute frame p-6 md:p-8 lg:p-10 xl:p-12 2xl:p-14 z-40 [transition:width_300ms_ease-in-out,margin_300ms_ease-in-out,opacity_500ms_ease-in-out,transform_500ms_ease-in-out] md:ml-[min(35%,_20rem)] w-auto top-1/2"
+        class="absolute p-8 md:p-12 lg:p-14 xl:p-16 2xl:p-20 z-40 [transition:width_300ms_ease-in-out,margin_300ms_ease-in-out,opacity_500ms_ease-in-out,transform_500ms_ease-in-out] md:ml-[max(25%,_15rem)] w-full md:w-[calc(100%_-_max(25%,_15rem))] h-full"
       >
         <slot />
       </main>
@@ -92,7 +71,7 @@ const { title } = Astro.props;
         *,
         *::before,
         *::after {
-          box-sizing: content-box;
+          box-sizing: border-box;
           /*border: 1px solid #d7ffff;*/
         }
         a {
@@ -115,21 +94,9 @@ const { title } = Astro.props;
             display: none;
           }
         }
-        section {
-          @apply pb-32;
-        }
       }
 
       @layer components {
-        .frame {
-          @apply inset-6 md:inset-8 lg:inset-10 xl:inset-12 2xl:inset-14;
-        }
-        .frame_line {
-          @apply absolute bg-mint;
-        }
-        .mask {
-          @apply fixed left-0 w-full h-6 md:h-8 lg:h-10 xl:h-12 2xl:h-14 backdrop-blur-[2px] z-50;
-        }
       }
 
       @layer utilities {
