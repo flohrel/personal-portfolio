@@ -3,14 +3,14 @@ import Layout from '@/layouts/Layout.astro';
 ---
 
 <Layout title="Home">
-  <section id="home" class="relative w-full h-full pb-0 top-1/2">
+  <section id="home" class="relative w-full h-full">
     <div
-      class="absolute w-full h-full flex flex-col justify-start items-end gap-2"
+      class="absolute w-full flex flex-col justify-start items-center md:items-end top-1/2"
     >
       <svg
         viewBox="-3 -1 435 58"
         xmlns="http://www.w3.org/2000/svg"
-        class="w-10/12 sm:w-9/12 md:w-8/12 lg:w-7/12 xl:w-6/12 2xl:w-5/12 shrink-0"
+        class="w-10/12 sm:w-9/12 md:w-8/12 lg:w-7/12 xl:w-6/12 2xl:w-5/12 shrink-0 -translate-y-1/2"
         ><g
           id="svgGroup"
           stroke-linecap="round"
@@ -39,10 +39,14 @@ import Layout from '@/layouts/Layout.astro';
           </defs></g
         ></svg
       >
-      <p class="text-right">
-        <span>Je m'appelle Florian Ohrel.</span>
-        <span>Je suis un développeur basé à Paris, France.</span>
-      </p>
     </div>
   </section>
 </Layout>
+
+<style>
+  @keyframes dash {
+    to {
+      stroke-dashoffset: 0;
+    }
+  }
+</style>

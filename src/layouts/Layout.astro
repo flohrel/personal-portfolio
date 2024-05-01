@@ -21,7 +21,7 @@ const { title } = Astro.props;
   <head>
     <SEO
       title={title}
-      titleTemplate="morizur's den - %s"
+      titleTemplate="Florian Ohrel's portfolio - %s"
       description="Florian Ohrel is a full-stack developer based in Paris, France."
       charset="UTF-8"
       openGraph={{
@@ -32,10 +32,9 @@ const { title } = Astro.props;
             'https://user-images.githubusercontent.com/5182256/131216951-8f74f425-f775-463d-a11b-0e01ad9fce8d.png',
         },
         optional: {
-          description:
-            'Florian Ohrel is a full-stack developer based in Paris, France.',
+          description: 'Florian Ohrel is a developer based in Paris, France.',
           locale: 'en_US',
-          siteName: "morizur's den",
+          siteName: "Florian Ohrel's portfolio",
         },
       }}
       extend={{
@@ -78,7 +77,7 @@ const { title } = Astro.props;
           @apply hover:text-mintHover transition-colors duration-200 ease-in-out;
         }
         h1 {
-          @apply font-sans font-semibold text-3xl md:text-4xl xl:text-5xl mb-1 md:mb-2 xl:mb-3 text-right;
+          @apply font-sans font-semibold text-xl md:text-2xl xl:text-3xl mb-1 md:mb-2 xl:mb-3;
         }
         h2 {
           @apply font-sans font-medium text-lg md:text-xl xl:text-2xl;
