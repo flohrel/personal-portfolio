@@ -1,0 +1,15 @@
+{
+  "title": "Transcendance",
+  "description": "Jeu de pong multijoueur dans une application web monopage, avec fonctionnalités de profile et de chat. Nécessite un compte de l'école 42 pour s'authentifier.",
+  "image": "https://github.com/jmz-mzr/transcendence/assets/60391881/6c1da3b2-2c9d-4038-9f07-f88512a82329",
+  "github": "https://github.com/jmz-mzr/transcendence",
+  "tags": [
+    "Typescript",
+    "Next.js",
+    "React",
+    "NestJS",
+    "Tailwind CSS",
+    "PostgreSQL",
+    "Prisma"
+  ]
+}

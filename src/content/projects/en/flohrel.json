@@ -1,0 +1,7 @@
+{
+  "title": "Personal portfolio",
+  "description": "Personal portfolio website built with Astro.",
+  "url": "https://flohrel.com",
+  "github": "https://github.com/flohrel/personal-portfolio",
+  "tags": ["HTML", "Astro", "Tailwind CSS"]
+}
