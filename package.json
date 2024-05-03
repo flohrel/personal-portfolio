@@ -26,6 +26,7 @@
     "@iconify-json/line-md": "^1.1.37",
     "@iconify-json/material-symbols": "^1.1.79",
     "@iconify-json/mingcute": "^1.1.17",
+    "@kindspells/astro-shield": "^1.3.6",
     "@typescript-eslint/parser": "^7.8.0",
     "autoprefixer": "^10.4.19",
     "eslint": "^8.57.0",

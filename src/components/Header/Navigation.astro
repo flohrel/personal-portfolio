@@ -23,6 +23,7 @@ const translateFragment = useTranslatedFragment(lang);
         <a
           class="item__link"
           href={translateFragment('#home')}
+          aria-label={'Go to ' + t('nav.home') + ' section'}
           data-astro-prefetch
         >
           {t('nav.home')}
@@ -33,6 +34,7 @@ const translateFragment = useTranslatedFragment(lang);
         <a
           class="item__link"
           href={translateFragment('#about')}
+          aria-label={'Go to ' + t('nav.about') + ' section'}
           data-astro-prefetch
         >
           {t('nav.about')}
@@ -43,6 +45,7 @@ const translateFragment = useTranslatedFragment(lang);
         <a
           class="item__link"
           href={translateFragment('#projects')}
+          aria-label={'Go to ' + t('nav.projects') + ' section'}
           data-astro-prefetch
         >
           {t('nav.projects')}
@@ -51,11 +54,10 @@ const translateFragment = useTranslatedFragment(lang);
       </li>
     </ul>
     <a
-      id="resume"
       class="hover:text-mint cursor-pointer rounded-sm py-3 px-4 leading-5 border-2 border-mint hover:-translate-x-1 hover:-translate-y-1 hover:shadow-[3px_3px_0_0] shadow-mint transition-all duration-300 ease-in-out"
       href="/resume.pdf"
       target="_blank"
-      data-astro-reload>Resume</a
+      data-astro-reload>{t('resume')}</a
     >
   </div>
   <div id="menu-btn__container" class="flex justify-end">

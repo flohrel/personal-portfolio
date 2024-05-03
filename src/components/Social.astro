@@ -33,7 +33,7 @@ const { className } = Astro.props;
   {
     socialMediaData.map((item) => (
       <a
-        class="w-7 h-7 group-[.sidebar--toggle]/content:hover:!text-mint hover:-translate-y-1 transition-transform duration-300 ease-in-out"
+        class="w-7 h-7 group-[.sidebar--toggle]/content:hover:!text-mint hover:-translate-y-1 group-[.sidebar--toggle]/content:[transition:transform_200ms_ease-in-out,colors_200ms_ease-in-out] md:[transition:transform_200ms_ease-in-out]"
         href={item.link}
         aria-label={'Open ' + item.title + ' profile'}
       >
@@ -47,7 +47,7 @@ const { className } = Astro.props;
   @layer base {
     #social-bar:last-child::after {
       content: '';
-      @apply block relative h-28 w-[1.5px] bg-mint left-3;
+      @apply block relative h-28 w-[1.5px] bg-mintHover left-3;
     }
   }
 </style>

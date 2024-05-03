@@ -13,12 +13,14 @@ export const ui: { [key: string]: { [key: string]: string } } = {
     'nav.blog': 'Blog',
     'nav.contact': 'Contact',
     jobTitle: 'Developer',
+    resume: 'Resume',
   },
   fr: {
     'nav.home': 'Accueil',
     'nav.about': 'À propos',
     'nav.projects': 'Projets',
     jobTitle: 'Développeur',
+    resume: 'CV',
   },
 } as const;
 

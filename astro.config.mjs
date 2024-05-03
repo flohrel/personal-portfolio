@@ -1,6 +1,7 @@
 import tailwind from "@astrojs/tailwind";
 import { defineConfig } from "astro/config";
 
+import shield from "@kindspells/astro-shield";
 import icon from "astro-icon";
 
 export default defineConfig({
@@ -14,5 +15,6 @@ export default defineConfig({
   },
   integrations: [
     tailwind({ nesting: true }),
-    icon({ include: { "fa6-brands": ["github", "linkedin"], "material-symbols": ["left-panel-open-sharp", "left-panel-close-sharp", "open-in-new", "mail-outline-rounded"], "mingcute": ["github-line"] } }),]
+    icon({ include: { "fa6-brands": ["github", "linkedin"], "material-symbols": ["left-panel-open-sharp", "left-panel-close-sharp", "open-in-new", "mail-outline-rounded"], "mingcute": ["github-line"] } }), shield({})],
+
 });

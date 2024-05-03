@@ -35,7 +35,7 @@ const translateFragment = useTranslatedFragment(lang);
       <a
         class="item__link"
         href={translateFragment('#home')}
-        data-astro-prefetch
+        aria-label={'Go to ' + t('nav.home') + ' section'}
       >
         {t('nav.home')}
       </a>
@@ -44,7 +44,7 @@ const translateFragment = useTranslatedFragment(lang);
       <a
         class="item__link"
         href={translateFragment('#about')}
-        data-astro-prefetch
+        aria-label={'Go to ' + t('nav.about') + ' section'}
       >
         {t('nav.about')}
       </a>
@@ -53,24 +53,31 @@ const translateFragment = useTranslatedFragment(lang);
       <a
         class="item__link"
         href={translateFragment('#projects')}
-        data-astro-prefetch
+        aria-label={'Go to ' + t('nav.projects') + ' section'}
       >
         {t('nav.projects')}
       </a>
     </li>
   </ul>
   <a
-    id="resume"
     class="w-fit hover:text-frame cursor-pointer rounded-sm py-3 px-4 leading-5 border-2 border-frame hover:-translate-x-1 hover:-translate-y-1 hover:shadow-[3px_3px_0_0] shadow-frame transition-all duration-300 ease-in-out"
     href="/resume.pdf"
     target="_blank"
-    data-astro-reload>Resume</a
+    data-astro-reload>{t('resume')}</a
   >
 </div>
 
 <style>
+  @tailwind base;
   @tailwind components;
   @tailwind utilities;
+
+  @layer base {
+    a,
+    button {
+      @apply hover:!text-selection text-frame;
+    }
+  }
 
   @layer components {
     .nav__list {
@@ -85,7 +92,7 @@ const translateFragment = useTranslatedFragment(lang);
     }
 
     .item__link {
-      @apply block h-full text-center whitespace-nowrap group-[.item--selected]:font-bold group-[.item--selected]:pointer-events-none;
+      @apply h-full block text-center whitespace-nowrap group-[.item--selected]:font-bold group-[.item--selected]:pointer-events-none;
     }
   }
 

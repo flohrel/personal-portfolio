@@ -38,14 +38,14 @@ if (imagePath && !images[imagePath])
     <div class="flex gap-2 py-1">
       {
         github && (
-          <a href={github}>
+          <a href={github} aria-label={'Open ' + title + ' github page'}>
             <Icon name={'mingcute:github-line'} class={'w-6 h-6'} />
           </a>
         )
       }
       {
         url && (
-          <a href={url}>
+          <a href={url} aria-label={'Open ' + title + ' url'}>
             <Icon name={'material-symbols:open-in-new'} class={'w-6 h-6'} />
           </a>
         )

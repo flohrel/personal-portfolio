@@ -22,6 +22,8 @@ const translatePath = useTranslatedPath(currLang);
         <a
           class={currLang === lang ? 'checked' : 'unchecked'}
           href={translatePath(`/${route ? route : ''}`, lang)}
+          aria-label="Change language"
+          data-astro-reload
         >
           {lang.toUpperCase()}
         </a>
@@ -31,6 +33,7 @@ const translatePath = useTranslatedPath(currLang);
 </div>
 
 <style>
+  @tailwind base;
   @tailwind components;
 
   @layer components {
