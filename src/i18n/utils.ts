@@ -15,6 +15,23 @@ export function useTranslatedPath(lang: keyof typeof ui) {
   };
 }
 
+export function useTranslatedFragment(lang: keyof typeof ui) {
+  return function translateFragment(path: string, l: string = lang as string) {
+    const fragmentName = path.replaceAll('#', '');
+    const hasTranslation =
+      defaultLang !== l &&
+      routes[l] !== undefined &&
+      routes[l][fragmentName] !== undefined;
+    const translatedFragment = hasTranslation
+      ? '#' + routes[l][fragmentName]
+      : path;
+
+    return !showDefaultLang && l === defaultLang
+      ? translatedFragment
+      : `/${l}/${translatedFragment}`;
+  };
+}
+
 export function getLangFromUrl(url: URL): keyof typeof ui {
   const [, lang] = url.pathname.split('/');
   if (lang in ui) return lang as keyof typeof ui;
@@ -51,6 +68,38 @@ export function getRouteFromUrl(url: URL): string | undefined {
   };
 
   const reversedKey = getKeyByValue(routes[currentLang], path);
+
+  if (reversedKey !== undefined) {
+    return reversedKey;
+  }
+
+  return undefined;
+}
+
+export function getFragmentFromUrl(url: URL): string | undefined {
+  const pathname = new URL(url).pathname;
+  const parts = pathname?.split('#');
+  const section = parts.pop();
+
+  if (section === undefined) {
+    return undefined;
+  }
+
+  const currentLang = getLangFromUrl(url);
+
+  if (defaultLang === currentLang) {
+    const route = Object.values(routes)[0];
+    return route[section] !== undefined ? route[section] : undefined;
+  }
+
+  const getKeyByValue = (
+    obj: Record<string, string>,
+    value: string
+  ): string | undefined => {
+    return Object.keys(obj).find((key) => obj[key] === value);
+  };
+
+  const reversedKey = getKeyByValue(routes[currentLang], section);
 
   if (reversedKey !== undefined) {
     return reversedKey;

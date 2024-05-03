@@ -27,6 +27,8 @@ export default {
       backgroundImage: {
         overlay:
           "linear-gradient(-45deg, rgba(130, 0, 100, 0.1) 0%, rgba(30, 190, 180, 0.1) 90%)",
+        overlay2:
+          "linear-gradient(-45deg, rgba(130, 0, 100, 0.8) 0%, rgba(30, 190, 180, 0.8) 90%)",
       },
       borderColor: {
         mint: "#d7ffff",

@@ -13,7 +13,9 @@ const t = useTranslations(currLang);
 const translatePath = useTranslatedPath(currLang);
 ---
 
-<div class="fixed flex gap-2 z-50 -right-3 top-8 rotate-90 origin-bottom">
+<div
+  class="fixed flex gap-2 z-50 -left-3 bottom-12 md:-left-2 md:bottom-14 xl:bottom-16 xl:-left-2 -rotate-90 origin-bottom"
+>
   {
     Object.entries(languages).map(([lang]) => (
       <>
@@ -33,12 +35,24 @@ const translatePath = useTranslatedPath(currLang);
 
   @layer components {
     .checked {
-      font-family: Verdana, Geneva, Tahoma, sans-serif;
-      @apply before:content-['■'] text-xs md:text-sm lg:text-base xl:text-lg;
+      font-family:
+        Inter,
+        Noto Sans,
+        Verdana,
+        Geneva,
+        Tahoma,
+        sans-serif;
+      @apply before:content-['■'] text-sm md:text-base xl:text-lg;
     }
     .unchecked {
-      font-family: Verdana, Geneva, Tahoma, sans-serif;
-      @apply before:content-['□'] text-xs md:text-sm lg:text-base xl:text-lg;
+      font-family:
+        Inter,
+        Noto Sans,
+        Verdana,
+        Geneva,
+        Tahoma,
+        sans-serif;
+      @apply before:content-['□'] text-sm md:text-base xl:text-lg;
     }
   }
 </style>

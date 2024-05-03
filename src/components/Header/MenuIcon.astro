@@ -1,0 +1,93 @@
+---
+const props = Astro.props;
+---
+
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" {...props}>
+  <g fill="none" stroke="currentColor" stroke-linecap="round" stroke-width="2">
+    <path d="M5 5L19 5">
+      <animate
+        fill="freeze"
+        attributeName="d"
+        begin="startAnimation.begin + 0.15s"
+        dur="0.2s"
+        values="M5 5L19 5;M5 5L19 19"></animate>
+      <animate
+        fill="freeze"
+        attributeName="d"
+        dur="0.2s"
+        values="M5 5L19 19;M5 5L19 5"
+        begin="reverseAnimation.begin"
+        restart="always"></animate>
+    </path>
+    <path d="M5 12H19">
+      <animate
+        fill="freeze"
+        attributeName="d"
+        dur="0.2s"
+        values="M5 12H19;M12 12H12"
+        begin="startAnimation.begin"></animate>
+      <set attributeName="opacity" begin="startAnimation.begin + 0.2s" to="0"
+      ></set>
+      <animate
+        fill="freeze"
+        attributeName="d"
+        dur="0.2s"
+        values="M12 12H12;M5 12H19"
+        begin="reverseAnimation.begin + 0.15s"
+        restart="always"></animate>
+      <set
+        attributeName="opacity"
+        begin="reverseAnimation.begin + 0.15s"
+        to="1"
+        restart="always"></set>
+    </path>
+    <path d="M5 19L19 19">
+      <animate
+        fill="freeze"
+        attributeName="d"
+        begin="startAnimation.begin + 0.15s"
+        dur="0.2s"
+        values="M5 19L19 19;M5 19L19 5"
+        repeatCount="1"></animate>
+      <animate
+        fill="freeze"
+        attributeName="d"
+        dur="0.2s"
+        values="M5 19L19 5;M5 19L19 19"
+        begin="reverseAnimation.begin"
+        restart="always"></animate>
+    </path>
+  </g>
+  <g>
+    <rect width="24" height="24" fill="transparent" stroke="transparent">
+      <animate
+        dur="0.001s"
+        attributeName="width"
+        values="24; 0"
+        id="startAnimation"
+        fill="freeze"
+        begin="click"></animate>
+      <animate
+        dur="0.001s"
+        attributeName="width"
+        values="0; 24"
+        fill="freeze"
+        begin="reverseAnimation.end"></animate>
+    </rect>
+    <rect width="0" height="24" fill="transparent" stroke="transparent">
+      <animate
+        dur="0.001s"
+        attributeName="width"
+        values="24; 0"
+        id="reverseAnimation"
+        fill="freeze"
+        begin="click"></animate>
+      <animate
+        dur="0.001s"
+        attributeName="width"
+        values="0; 24"
+        begin="startAnimation.end"
+        fill="freeze"></animate>
+    </rect>
+  </g>
+</svg>

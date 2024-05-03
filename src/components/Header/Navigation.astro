@@ -1,0 +1,128 @@
+---
+import {
+  getFragmentFromUrl,
+  getLangFromUrl,
+  useTranslatedFragment,
+  useTranslations,
+} from '../../i18n/utils';
+import MenuIcon from '@/components/Header/MenuIcon.astro';
+
+const route = getFragmentFromUrl(Astro.url);
+const lang = getLangFromUrl(Astro.url);
+const t = useTranslations(lang);
+const translateFragment = useTranslatedFragment(lang);
+---
+
+<nav id="nav__container" class="h-10">
+  <div
+    id="nav-bar"
+    class="flex flex-row gap-8 font-light text-base md:text-lg xl:text-xl my-auto self-stretch z-50 max-md:hidden max-md:group-[.sidebar--toggle]/content:flex-col"
+  >
+    <ul id="nav-list" class="group/list nav__list">
+      <li id="nav-home" class="group nav__item">
+        <a
+          class="item__link"
+          href={translateFragment('#home')}
+          data-astro-prefetch
+        >
+          {t('nav.home')}
+        </a>
+        <div class={'item__bar'}></div>
+      </li>
+      <li id="nav-about" class="group nav__item">
+        <a
+          class="item__link"
+          href={translateFragment('#about')}
+          data-astro-prefetch
+        >
+          {t('nav.about')}
+        </a>
+        <div class={'item__bar'}></div>
+      </li>
+      <li id="nav-projects" class="group nav__item">
+        <a
+          class="item__link"
+          href={translateFragment('#projects')}
+          data-astro-prefetch
+        >
+          {t('nav.projects')}
+        </a>
+        <div class={'item__bar'}></div>
+      </li>
+    </ul>
+    <a
+      id="resume"
+      class="hover:text-mint cursor-pointer rounded-sm py-3 px-4 leading-5 border-2 border-mint hover:-translate-x-1 hover:-translate-y-1 hover:shadow-[3px_3px_0_0] shadow-mint transition-all duration-300 ease-in-out"
+      href="/resume.pdf"
+      target="_blank"
+      data-astro-reload>Resume</a
+    >
+  </div>
+  <div id="menu-btn__container" class="flex justify-end">
+    <button
+      id="sidebar-toggle-btn"
+      aria-label="Toggle sidebar menu"
+      class="md:hidden group-[.sidebar--toggle]/content:pointer-events-auto"
+    >
+      <span class="sr-only">Toggle navigation menu</span>
+      <MenuIcon class="w-10 h-10" />
+    </button>
+  </div>
+</nav>
+
+<style>
+  @tailwind components;
+  @tailwind utilities;
+
+  @layer components {
+    .nav__list {
+      @apply flex gap-6 items-center justify-center;
+    }
+
+    .nav__item {
+      @apply flex flex-col [direction:rtl];
+      &:hover {
+        @apply [direction:ltr];
+      }
+    }
+
+    .item__bar {
+      @apply w-0 group-hover:!w-full group-hover/list:w-0 bg-mintHover [transition:width_300ms_ease-in-out] h-[1px] group-[.item--selected]:bg-mint;
+    }
+
+    .item__link {
+      @apply block h-full text-center whitespace-nowrap group-[.item--selected]:font-bold group-[.item--selected]:pointer-events-none;
+    }
+  }
+
+  @layer utilities {
+    .item--selected {
+      @apply [direction:ltr] group-hover/list:[direction:rtl] hover:![direction:ltr];
+      & .item__bar {
+        @apply w-full;
+      }
+    }
+  }
+</style>
+
+<script>
+  const sections = document.querySelectorAll('section');
+  const observer = new IntersectionObserver(
+    (entries) => {
+      entries.forEach((entry) => {
+        const navEntry = document.querySelector(`#nav-${entry.target.id}`);
+        if (entry.isIntersecting) {
+          navEntry?.classList.add('item--selected');
+        } else {
+          navEntry?.classList.remove('item--selected');
+        }
+      });
+    },
+    { root: null, rootMargin: '0px', threshold: 0.5 }
+  );
+  for (let i = 0; i < sections.length; i++) {
+    const elements = sections[i];
+
+    observer.observe(elements);
+  }
+</script>
