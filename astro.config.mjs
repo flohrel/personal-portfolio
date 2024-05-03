@@ -14,5 +14,5 @@ export default defineConfig({
   },
   integrations: [
     tailwind({ nesting: true }),
-    icon({ include: { "fa6-brands": ["github", "linkedin"], "material-symbols": ["left-panel-open-sharp", "left-panel-close-sharp"] } }),]
+    icon({ include: { "fa6-brands": ["github", "linkedin"], "material-symbols": ["left-panel-open-sharp", "left-panel-close-sharp", "open-in-new"], "mingcute": ["github-line"] } }),]
 });

@@ -11,7 +11,7 @@ const projects = await getCollection('projects', ({ id }) => {
 ---
 
 <Layout title="Projects">
-  <section class="relative w-full top-1/3">
+  <section class="w-full">
     <h1>Projects</h1>
     <div>
       <ul>
@@ -21,7 +21,7 @@ const projects = await getCollection('projects', ({ id }) => {
               <ProjectCard
                 title={project.data.title}
                 description={project.data.description}
-                image={project.data.image}
+                imagePath={project.data.imagePath}
                 url={project.data.url}
                 github={project.data.github}
                 tags={project.data.tags}

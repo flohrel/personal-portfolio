@@ -1,6 +1,7 @@
 {
   "title": "webserv",
   "description": "Lightweight and fast single-threaded HTTP/1.1 web server written in C++.",
+  "imagePath": "/src/assets/webserv.png",
   "github": "https://github.com/jmz-mzr/webserv",
   "tags": ["C++", "Python"]
 }

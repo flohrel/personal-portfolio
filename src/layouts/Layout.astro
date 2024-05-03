@@ -51,11 +51,11 @@ const { title } = Astro.props;
     <div id="overlay" class="fixed h-lvh w-full inset-0 bg-overlay z-30"></div>
     <div
       id="frame-content"
-      class="relative group/frame-content md:sidebar--toggle h-screen w-full z-50"
+      class="grid grid-cols-12 gap-4 group/frame-content md:sidebar--toggle h-screen w-full z-50"
     >
       <Sidebar />
       <main
-        class="absolute p-8 md:p-12 lg:p-14 xl:p-16 2xl:p-20 z-40 [transition:width_300ms_ease-in-out,margin_300ms_ease-in-out,opacity_500ms_ease-in-out,transform_500ms_ease-in-out] md:ml-[max(25%,_15rem)] w-full md:w-[calc(100%_-_max(25%,_15rem))] h-full"
+        class="col-start-2 col-span-10 md:col-start-4 md:col-span-8 row-start-1 row-auto p-4 md:p-6 xl:p-8 z-40 [transition:width_300ms_ease-in-out,margin_300ms_ease-in-out,opacity_500ms_ease-in-out,transform_500ms_ease-in-out] w-full max-w-7xl m-[0_auto]"
       >
         <slot />
       </main>
@@ -77,13 +77,13 @@ const { title } = Astro.props;
           @apply hover:text-mintHover transition-colors duration-200 ease-in-out;
         }
         h1 {
-          @apply font-sans font-semibold text-xl md:text-2xl xl:text-3xl mb-1 md:mb-2 xl:mb-3;
+          @apply font-sans font-semibold text-2xl md:text-3xl xl:text-4xl mb-1 md:mb-2 xl:mb-3 text-right;
         }
         h2 {
           @apply font-sans font-medium text-lg md:text-xl xl:text-2xl;
         }
         p {
-          @apply font-slab font-normal text-base md:text-lg xl:text-xl mb-4;
+          @apply font-slab font-normal text-base md:text-lg xl:text-xl mb-4 max-w-3xl;
         }
         html {
           -ms-overflow-style: none;

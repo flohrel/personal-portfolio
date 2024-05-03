@@ -1,6 +1,7 @@
 {
-  "title": "Portfolio personnel",
+  "title": "flohrel.com",
   "description": "Site web portfolio personnel fait avec Astro.",
+  "imagePath": "/src/assets/flohrel.com.png",
   "url": "https://flohrel.com",
   "github": "https://github.com/flohrel/personal-portfolio",
   "tags": ["HTML", "Astro", "Tailwind CSS"]

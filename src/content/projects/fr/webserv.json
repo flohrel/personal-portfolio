@@ -1,6 +1,7 @@
 {
   "title": "webserv",
   "description": "Serveur web HTTP/1.1 mono-thread, léger et performant, codé en C++.",
+  "imagePath": "/src/assets/webserv.png",
   "github": "https://github.com/jmz-mzr/webserv",
   "tags": ["C++", "Python"]
 }

@@ -15,11 +15,14 @@ export default {
       colors: {
         mint: "#d7ffff",
         mintHover: "#7fecec",
+        frame: "#0d090f",
+        selection: "rgba(130, 0, 100, 1)",
       },
       backgroundColor: {
         frame: "#0d090f",
         content: "#100e14",
-        selection: "rgba(130, 0, 100, 1)"
+        selection: "rgba(130, 0, 100, 1)",
+        mint: "#d7ffff",
       },
       backgroundImage: {
         overlay:

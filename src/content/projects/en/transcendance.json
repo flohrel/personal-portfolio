@@ -1,7 +1,7 @@
 {
-  "title": "Transcendance",
+  "title": "transcendance",
   "description": "Multiplayer pong game in a single-page application, with profile and chat features. Require a 42 school account for authentication.",
-  "image": "https://github.com/jmz-mzr/transcendence/assets/60391881/6c1da3b2-2c9d-4038-9f07-f88512a82329",
+  "imagePath": "/src/assets/transcendance.gif",
   "github": "https://github.com/jmz-mzr/transcendence",
   "tags": [
     "Typescript",
