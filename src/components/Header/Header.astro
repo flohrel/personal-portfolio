@@ -12,7 +12,7 @@ const t = useTranslations(lang);
 >
   <div
     id="info__container"
-    class="flex flex-col items-left justify-center opacity-0 group-[.menu--toggle]/content:opacity-100 group-[.menu--toggle]/content:text-frame self-stretch [transition:opacity_150ms_ease-in-out_1_0s_forwards]"
+    class="flex flex-col items-left justify-center opacity-0 group-[.menu--toggle]/content:animate-fadein group-[.menu--toggle]/content:text-frame self-stretch md:animate-fadein"
   >
     <span
       id="info__name"
@@ -28,7 +28,11 @@ const t = useTranslations(lang);
     </span>
   </div>
   <Navigation />
-  <button id="menu-toggle-btn" aria-label="Toggle menu menu" class="md:hidden">
+  <button
+    id="menu-toggle-btn"
+    aria-label="Toggle menu menu"
+    class="md:hidden group-[.menu--toggle]/content:text-frame group-[.menu--toggle]/content:hover:text-selection"
+  >
     <span class="sr-only">Toggle navigation menu</span>
     <svg
       xmlns="http://www.w3.org/2000/svg"

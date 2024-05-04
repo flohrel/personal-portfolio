@@ -17,13 +17,15 @@ export default {
         mint: "#d7ffff",
         mintHover: "#7fecec",
         frame: "#0d090f",
+        content: "#100e14",
         selection: "rgba(130, 0, 100, 1)",
       },
       backgroundColor: {
+        mint: "#d7ffff",
+        mintHover: "#7fecec",
         frame: "#0d090f",
         content: "#100e14",
         selection: "rgba(130, 0, 100, 1)",
-        mint: "#d7ffff",
       },
       backgroundImage: {
         overlay:
@@ -53,7 +55,9 @@ export default {
         },
       },
       animation: {
-        'grow': 'grow 1000ms ease-out 1 0s forwards',
+        'grow': 'grow 1s ease-out 1 200ms forwards',
+        'fadein': 'fade 150ms ease-in-out 1 0s forwards',
+        'fadeout': 'fade 150ms ease-in-out 1 0s backwards',
       },
     },
   },

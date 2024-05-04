@@ -28,7 +28,7 @@ const { className } = Astro.props;
             (currLang === lang
               ? 'before:content-["■"]'
               : 'before:content-["□"]') +
-            ' text-sm md:text-base xl:text-lg font-other' +
+            ' text-sm md:text-base xl:text-lg font-other group-[.menu--toggle]/content:text-frame group-[.menu--toggle]/content:hover:text-selection group-[.menu--toggle]/content:font-medium transition-colors duration-200 ease-in-out' +
             (className || '')
           }
           href={translatePath(`/${route || ''}`, lang)}

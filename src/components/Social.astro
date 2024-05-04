@@ -29,12 +29,13 @@ const { className } = Astro.props;
 <div
   id="social-bar"
   class={(className || '') +
-    ' p-6 md:p-5 xl:p-8 z-50 last:after:block last:after:relative last:after:h-0 last:after:w-[1.5px] last:after:bg-mint last:after:left-3 last:after:content-[""] last:after:animate-grow'}
+    ' ' +
+    'hidden p-6 md:p-5 xl:p-8 z-50 last:after:block last:after:relative last:after:h-0 last:after:w-[1.5px] last:after:bg-mint last:after:left-3 last:after:content-[""] last:after:animate-grow'}
 >
   {
     socialMediaData.map((item) => (
       <a
-        class="w-7 h-7 hover:-translate-y-1 group-[.menu--toggle]/content:[transition:transform_200ms_ease-in-out] [transition:transform_200ms_ease-in-out,color_200ms_ease-in-out]"
+        class="w-7 h-7 hover:-translate-y-1 transition-transform duration-200 ease-in-out max-md:opacity-0 md:animate-fadein group-[.menu--toggle]/content:animate-fadein group-[.menu--toggle]/content:text-frame group-[.menu--toggle]/content:hover:text-mintHover"
         href={item.link}
         aria-label={'Open ' + item.title + ' profile'}
       >

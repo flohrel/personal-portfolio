@@ -12,7 +12,9 @@ const translateFragment = useTranslatedFragment(lang);
   id="menu"
   class="fixed col-start-1 col-span-full w-full h-screen bg-overlay2 backdrop-blur z-40 group-[.menu--toggle]/content:translate-x-0 translate-x-full transition-transform duration-300 ease-in-out flex flex-col md:invisible gap-16 font-bold text-xl md:text-2xl xl:text-3xl my-auto self-stretch items-center justify-center"
 >
-  <Social className="fixed right-0 bottom-0 flex flex-row gap-4 text-frame" />
+  <Social
+    className="group-[.menu--toggle]/content:flex fixed right-0 bottom-0 flex-row gap-3"
+  />
   <ul id="nav-list" class="group/list nav__list">
     <li id="nav-home" class="group nav__item">
       <a
