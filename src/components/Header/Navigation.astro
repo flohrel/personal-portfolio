@@ -5,9 +5,7 @@ import {
   useTranslatedFragment,
   useTranslations,
 } from '../../i18n/utils';
-import MenuIcon from '@/components/Header/MenuIcon.astro';
 
-const route = getFragmentFromUrl(Astro.url);
 const lang = getLangFromUrl(Astro.url);
 const t = useTranslations(lang);
 const translateFragment = useTranslatedFragment(lang);
@@ -59,16 +57,6 @@ const translateFragment = useTranslatedFragment(lang);
       target="_blank"
       data-astro-reload>{t('resume')}</a
     >
-  </div>
-  <div id="menu-btn__container" class="flex justify-end">
-    <button
-      id="sidebar-toggle-btn"
-      aria-label="Toggle sidebar menu"
-      class="md:hidden group-[.sidebar--toggle]/content:pointer-events-auto"
-    >
-      <span class="sr-only">Toggle navigation menu</span>
-      <MenuIcon class="w-10 h-10" />
-    </button>
   </div>
 </nav>
 

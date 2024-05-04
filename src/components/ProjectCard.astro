@@ -23,7 +23,7 @@ if (imagePath && !images[imagePath])
 
 <div class="group/card grid grid-cols-12 gap-4 items-center min-h-72">
   <div
-    class="flex flex-col justify-center gap-2 order-1 row-start-1 row-span-full col-start-1 col-span-full md:col-end-8 xl:col-end-7 z-20 p-4 md:p-6 xl:p-8 md:!pr-0"
+    class="flex flex-col justify-center gap-2 order-1 row-start-1 row-span-full col-start-1 col-span-full md:col-end-8 xl:col-end-7 z-20 p-6 md:p-8 xl:p-12 md:!pr-0"
   >
     <h2>{title}</h2>
     <p class="m-0">{description}</p>
@@ -57,7 +57,7 @@ if (imagePath && !images[imagePath])
   >
   </div>
   <Image
-    class="opacity-20 grayscale group-hover/card:grayscale-0 group-hover/card:opacity-100 group-hover/card:max-md:opacity-50 -z-10 m-[0_auto] row-start-1 row-span-full col-start-1 md:col-start-8 xl:col-start-7 col-end-[-1] p-4 md:p-6 xl:p-8 md:!pl-0"
+    class="opacity-20 grayscale group-hover/card:grayscale-0 group-hover/card:opacity-100 group-hover/card:max-md:opacity-50 -z-10 m-[0_auto] row-start-1 row-span-full col-start-1 md:col-start-8 xl:col-start-7 col-end-[-1] p-4 md:p-6 xl:p-8 md:!pl-0 group-hover/card:md:z-20"
     src={images[imagePath]()}
     alt={title + ' thumbnail '}
   />

@@ -23,15 +23,14 @@ const { title } = Astro.props;
   <head>
     <SEO
       title={title}
-      titleTemplate="Florian Ohrel's portfolio - %s"
-      description="Florian Ohrel is a full-stack developer based in Paris, France."
+      titleTemplate="Florian Ohrel's portfolio"
+      description="Florian Ohrel is a software engineer based in Paris, France."
       charset="UTF-8"
       openGraph={{
         basic: {
           title: title,
           type: 'website',
-          image:
-            'https://user-images.githubusercontent.com/5182256/131216951-8f74f425-f775-463d-a11b-0e01ad9fce8d.png',
+          image: '/src/assets/flohrel.com.png',
         },
         optional: {
           description: 'Florian Ohrel is a developer based in Paris, France.',
@@ -118,21 +117,5 @@ const { title } = Astro.props;
         }
       }
     </style>
-    <script>
-      document.addEventListener('astro:page-load', () => {
-        const content = document.querySelector('#content');
-        const sidebarToggleBtn = document.getElementById('sidebar-toggle-btn');
-
-        sidebarToggleBtn?.addEventListener('click', () => {
-          content?.classList.toggle('sidebar--toggle');
-        });
-
-        window.addEventListener('resize', () => {
-          if (window.matchMedia('(min-width: 768px)').matches) {
-            content?.classList.remove('sidebar--toggle');
-          }
-        });
-      });
-    </script>
   </body>
 </html>

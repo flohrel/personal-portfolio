@@ -8,24 +8,131 @@ const t = useTranslations(lang);
 
 <header
   id="header"
-  class="fixed col-start-1 col-span-12 h-20 md:h-28 w-full z-50 flex backdrop-blur-[4px] group-[.sidebar--toggle]/content:backdrop-blur-none group-[.sidebar--toggle]/content:pointer-events-none px-6 py-8 md:px-12 md:py-6 xl:px-16 xl:py-8 flex-row items-center justify-end md:justify-between grow overflow-hidden group-[.sidebar--toggle]/content:[transition:backdrop-filter_100ms_ease-in-out] [transition:backdrop-filter_100ms_ease-in-out_500ms]"
+  class="fixed col-start-1 col-span-12 h-24 md:h-28 w-full z-50 flex backdrop-blur-[4px] px-6 md:px-12 md:py-6 xl:px-16 xl:py-8 flex-row items-center justify-between grow"
 >
   <div
     id="info__container"
-    class="flex flex-col items-left justify-center max-md:hidden"
+    class="flex flex-col items-left justify-center max-md:opacity-0 group-[.sidebar--toggle]/content:opacity-100 group-[.sidebar--toggle]/content:text-frame self-stretch group-[.sidebar--toggle]/content:[transition:opacity_150ms_ease-in-out]"
   >
-    <div
+    <span
       id="info__name"
-      class="font-sans font-medium text-lg md:text-xl xl:text-2xl leading-4 whitespace-nowrap"
+      class="font-sans max-md:font-black font-medium text-xl md:text-xl xl:text-2xl max-md:leading-6 whitespace-nowrap self-stretch"
     >
       Florian Ohrel
-    </div>
-    <div
+    </span>
+    <span
       id="info__job-title"
-      class="font-slab font-normal text-base md:text-lg xl:text-xl leading-4 whitespace-nowrap"
+      class="font-slab max-md:font-black font-normal text-lg md:text-lg xl:text-xl max-md:leading-6 whitespace-nowrap self-stretch"
     >
       {t('jobTitle')}
-    </div>
+    </span>
   </div>
   <Navigation />
+  <button
+    id="sidebar-toggle-btn"
+    aria-label="Toggle sidebar menu"
+    class="md:hidden"
+  >
+    <span class="sr-only">Toggle navigation menu</span>
+    <svg
+      xmlns="http://www.w3.org/2000/svg"
+      viewBox="0 0 24 24"
+      class="w-10 h-10"
+    >
+      <g
+        fill="none"
+        stroke="currentColor"
+        stroke-linecap="round"
+        stroke-width="2"
+      >
+        <path d="M5 5L19 5">
+          <animate
+            fill="freeze"
+            attributeName="d"
+            begin="startAnimation.begin + 0.15s"
+            dur="0.2s"
+            values="M5 5L19 5;M5 5L19 19"></animate>
+          <animate
+            fill="freeze"
+            attributeName="d"
+            dur="0.2s"
+            values="M5 5L19 19;M5 5L19 5"
+            begin="reverseAnimation.begin"
+            restart="always"></animate>
+        </path>
+        <path d="M5 12H19">
+          <animate
+            fill="freeze"
+            attributeName="d"
+            dur="0.2s"
+            values="M5 12H19;M12 12H12"
+            begin="startAnimation.begin"></animate>
+          <set
+            attributeName="opacity"
+            begin="startAnimation.begin + 0.2s"
+            to="0"></set>
+          <animate
+            fill="freeze"
+            attributeName="d"
+            dur="0.2s"
+            values="M12 12H12;M5 12H19"
+            begin="reverseAnimation.begin + 0.15s"
+            restart="always"></animate>
+          <set
+            attributeName="opacity"
+            begin="reverseAnimation.begin + 0.15s"
+            to="1"
+            restart="always"></set>
+        </path>
+        <path d="M5 19L19 19">
+          <animate
+            fill="freeze"
+            attributeName="d"
+            begin="startAnimation.begin + 0.15s"
+            dur="0.2s"
+            values="M5 19L19 19;M5 19L19 5"
+            repeatCount="1"></animate>
+          <animate
+            fill="freeze"
+            attributeName="d"
+            dur="0.2s"
+            values="M5 19L19 5;M5 19L19 19"
+            begin="reverseAnimation.begin"
+            restart="always"></animate>
+        </path>
+      </g>
+      <g>
+        <rect width="24" height="24" fill="transparent" stroke="transparent">
+          <animate
+            dur="0.001s"
+            attributeName="width"
+            values="24; 0"
+            id="startAnimation"
+            fill="freeze"
+            begin="click"></animate>
+          <animate
+            dur="0.001s"
+            attributeName="width"
+            values="0; 24"
+            fill="freeze"
+            begin="reverseAnimation.end"></animate>
+        </rect>
+        <rect width="0" height="24" fill="transparent" stroke="transparent">
+          <animate
+            dur="0.001s"
+            attributeName="width"
+            values="24; 0"
+            id="reverseAnimation"
+            fill="freeze"
+            begin="click"></animate>
+          <animate
+            dur="0.001s"
+            attributeName="width"
+            values="0; 24"
+            begin="startAnimation.end"
+            fill="freeze"></animate>
+        </rect>
+      </g>
+    </svg>
+  </button>
 </header>

@@ -10,32 +10,16 @@ const translateFragment = useTranslatedFragment(lang);
 
 <div
   id="sidebar"
-  class="fixed col-start-1 col-span-full w-full h-dvh bg-overlay2 backdrop-blur z-40 group-[.sidebar--toggle]/content:translate-x-0 translate-x-full transition-transform duration-300 ease-in-out flex flex-col md:invisible gap-8 font-bold text-xl md:text-2xl xl:text-3xl my-auto self-stretch items-center justify-center"
+  class="fixed col-start-1 col-span-full w-full h-screen bg-overlay2 backdrop-blur z-40 group-[.sidebar--toggle]/content:translate-x-0 translate-x-full transition-transform duration-300 ease-in-out flex flex-col md:invisible gap-16 font-bold text-xl md:text-2xl xl:text-3xl my-auto self-stretch items-center justify-center"
 >
-  <div
-    id="info__container"
-    class="fixed px-6 py-8 top-0 left-0 flex flex-col items-left justify-center md:hidden text-frame"
-  >
-    <div
-      id="info__name"
-      class="font-sans font-extrabold text-2xl leading-6 whitespace-nowrap"
-    >
-      Florian Ohrel
-    </div>
-    <div
-      id="info__job-title"
-      class="font-slab font-bold text-lg leading-6 whitespace-nowrap"
-    >
-      {t('jobTitle')}
-    </div>
-  </div>
-  <Social className="fixed right-0 bottom-0 flex flex-col gap-4" />
+  <Social className="fixed left-2 flex flex-col gap-4" />
   <ul id="nav-list" class="group/list nav__list">
     <li id="nav-home" class="group nav__item">
       <a
         class="item__link"
         href={translateFragment('#home')}
         aria-label={'Go to ' + t('nav.home') + ' section'}
+        data-astro-prefetch
       >
         {t('nav.home')}
       </a>
@@ -45,6 +29,7 @@ const translateFragment = useTranslatedFragment(lang);
         class="item__link"
         href={translateFragment('#about')}
         aria-label={'Go to ' + t('nav.about') + ' section'}
+        data-astro-prefetch
       >
         {t('nav.about')}
       </a>
@@ -54,15 +39,17 @@ const translateFragment = useTranslatedFragment(lang);
         class="item__link"
         href={translateFragment('#projects')}
         aria-label={'Go to ' + t('nav.projects') + ' section'}
+        data-astro-prefetch
       >
         {t('nav.projects')}
       </a>
     </li>
   </ul>
   <a
-    class="w-fit hover:text-frame cursor-pointer rounded-sm py-3 px-4 leading-5 border-2 border-frame hover:-translate-x-1 hover:-translate-y-1 hover:shadow-[3px_3px_0_0] shadow-frame transition-all duration-300 ease-in-out"
+    class="fixed bottom-1/4 w-fit hover:text-frame cursor-pointer rounded-sm py-3 px-4 leading-5 border-2 border-frame hover:-translate-x-1 hover:-translate-y-1 hover:shadow-[3px_3px_0_0] shadow-frame transition-all duration-300 ease-in-out"
     href="/resume.pdf"
     target="_blank"
+    data-astro-prefetch
     data-astro-reload>{t('resume')}</a
   >
 </div>
@@ -107,23 +94,29 @@ const translateFragment = useTranslatedFragment(lang);
 </style>
 
 <script>
-  const sections = document.querySelectorAll('section');
-  const observer = new IntersectionObserver(
-    (entries) => {
-      entries.forEach((entry) => {
-        const navEntry = document.querySelector(`#nav-${entry.target.id}`);
-        if (entry.isIntersecting) {
-          navEntry?.classList.add('item--selected');
-        } else {
-          navEntry?.classList.remove('item--selected');
-        }
-      });
-    },
-    { root: null, rootMargin: '0px', threshold: 0.5 }
-  );
-  for (let i = 0; i < sections.length; i++) {
-    const elements = sections[i];
+  document.addEventListener('astro:page-load', () => {
+    const content = document.querySelector('#content');
+    const sidebarToggleBtn = document.getElementById('sidebar-toggle-btn');
+    const navLinks = document.querySelectorAll('#sidebar .item__link');
+    const svgAnimation: (HTMLElement & SVGAnimationElement) | null =
+      document.getElementById('reverseAnimation') as HTMLElement &
+        SVGAnimationElement;
 
-    observer.observe(elements);
-  }
+    navLinks?.forEach((link) => {
+      link.addEventListener('click', () => {
+        content?.classList.remove('sidebar--toggle');
+        svgAnimation?.beginElement();
+      });
+    });
+    sidebarToggleBtn?.addEventListener('click', () => {
+      content?.classList.toggle('sidebar--toggle');
+    });
+
+    window.addEventListener('resize', () => {
+      if (window.matchMedia('(min-width: 768px)').matches) {
+        content?.classList.remove('sidebar--toggle');
+        svgAnimation?.beginElement();
+      }
+    });
+  });
 </script>
