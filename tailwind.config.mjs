@@ -11,6 +11,7 @@ export default {
       fontFamily: {
         sans: ["Josefin Sans Variable", ...defaultTheme.fontFamily.sans],
         slab: ["Josefin Slab Variable", ...defaultTheme.fontFamily.serif],
+        other: ["Noto Sans Variable", ...defaultTheme.fontFamily.mono],
       },
       colors: {
         mint: "#d7ffff",
@@ -34,8 +35,8 @@ export default {
         mint: "#d7ffff",
       },
       boxShadow: {
-        'sidebar': "3px 0px 6px 0px rgba(0,0,0,0.16),3px 0px 6px 0px rgba(0,0,0,0.23)",
-        'sidebar-with-neon': "3px 0px 6px 0px rgba(0,0,0,0.16),3px 0px 6px 0px rgba(0,0,0,0.23), inset 16px 16px 8px -16px rgb(215 255 255 / 0.1), inset 16px -16px 8px -16px rgb(215 255 255 / 0.1)",
+        'menu': "3px 0px 6px 0px rgba(0,0,0,0.16),3px 0px 6px 0px rgba(0,0,0,0.23)",
+        'menu-with-neon': "3px 0px 6px 0px rgba(0,0,0,0.16),3px 0px 6px 0px rgba(0,0,0,0.23), inset 16px 16px 8px -16px rgb(215 255 255 / 0.1), inset 16px -16px 8px -16px rgb(215 255 255 / 0.1)",
         'frame-neon': "inset 0px 0px 10px 0px rgba(215,255,255,0.16),inset 0px 0px 10px 0px rgba(215,255,255,0.23)",
         'multi': "rgba(215, 255, 255, 0.4) 5px 0px, rgba(215, 255, 255, 0.3) 10px 0px, rgba(215, 255, 255, 0.2) 15px 0px, rgba(215, 255, 255, 0.1) 20px 0px, rgba(215, 255, 255, 0.05) 25px 0px",
         'ultra-neon': "rgba(215, 255, 255, 0.09) 2px 0px 1px, rgba(215, 255, 255, 0.09) 4px 0px 2px, rgba(215, 255, 255, 0.09) 8px 0px 4px, rgba(215, 255, 255, 0.09) 16px 0px 8px, rgba(215, 255, 255, 0.09) 32px 0px 16px"
@@ -43,8 +44,17 @@ export default {
       keyframes: {
         dash: {
           'to': { 'stroke-dashoffset': '0' },
-        }
-      }
+        },
+        fade: {
+          'to': { 'opacity': '100' },
+        },
+        grow: {
+          'to': { 'height': '6rem' },
+        },
+      },
+      animation: {
+        'grow': 'grow 1000ms ease-out 1 0s forwards',
+      },
     },
   },
   plugins: [],

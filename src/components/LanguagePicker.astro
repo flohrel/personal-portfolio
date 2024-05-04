@@ -4,24 +4,34 @@ import {
   getLangFromUrl,
   getRouteFromUrl,
   useTranslatedPath,
-  useTranslations,
 } from '@/i18n/utils';
 
 const currLang = getLangFromUrl(Astro.url);
 const route = getRouteFromUrl(Astro.url);
-const t = useTranslations(currLang);
 const translatePath = useTranslatedPath(currLang);
+
+interface Props {
+  className?: string;
+}
+
+const { className } = Astro.props;
 ---
 
 <div
-  class="fixed flex gap-2 z-50 -left-3 bottom-12 md:-left-2 md:bottom-14 xl:bottom-16 xl:-left-2 -rotate-90 origin-bottom"
+  class="fixed flex gap-2 z-50 -left-2 bottom-11 md:-left-1 md:bottom-14 xl:bottom-16 xl:left-1 -rotate-90 origin-bottom"
 >
   {
     Object.entries(languages).map(([lang]) => (
       <>
         <a
-          class={currLang === lang ? 'checked' : 'unchecked'}
-          href={translatePath(`/${route ? route : ''}`, lang)}
+          class={
+            (currLang === lang
+              ? 'before:content-["■"]'
+              : 'before:content-["□"]') +
+            ' text-sm md:text-base xl:text-lg font-other' +
+            (className || '')
+          }
+          href={translatePath(`/${route || ''}`, lang)}
           aria-label="Change language"
           data-astro-reload
         >
@@ -31,31 +41,3 @@ const translatePath = useTranslatedPath(currLang);
     ))
   }
 </div>
-
-<style>
-  @tailwind base;
-  @tailwind components;
-
-  @layer components {
-    .checked {
-      font-family:
-        Inter,
-        Noto Sans,
-        Verdana,
-        Geneva,
-        Tahoma,
-        sans-serif;
-      @apply before:content-['■'] text-sm md:text-base xl:text-lg;
-    }
-    .unchecked {
-      font-family:
-        Inter,
-        Noto Sans,
-        Verdana,
-        Geneva,
-        Tahoma,
-        sans-serif;
-      @apply before:content-['□'] text-sm md:text-base xl:text-lg;
-    }
-  }
-</style>

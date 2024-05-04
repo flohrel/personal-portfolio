@@ -1,6 +1,6 @@
 ---
-import { getLangFromUrl, useTranslations } from '../../i18n/utils';
-import { useTranslatedFragment } from '../../i18n/utils';
+import { getLangFromUrl, useTranslations } from '../i18n/utils';
+import { useTranslatedFragment } from '../i18n/utils';
 import Social from '@/components/Social.astro';
 
 const lang = getLangFromUrl(Astro.url);
@@ -9,10 +9,10 @@ const translateFragment = useTranslatedFragment(lang);
 ---
 
 <div
-  id="sidebar"
-  class="fixed col-start-1 col-span-full w-full h-screen bg-overlay2 backdrop-blur z-40 group-[.sidebar--toggle]/content:translate-x-0 translate-x-full transition-transform duration-300 ease-in-out flex flex-col md:invisible gap-16 font-bold text-xl md:text-2xl xl:text-3xl my-auto self-stretch items-center justify-center"
+  id="menu"
+  class="fixed col-start-1 col-span-full w-full h-screen bg-overlay2 backdrop-blur z-40 group-[.menu--toggle]/content:translate-x-0 translate-x-full transition-transform duration-300 ease-in-out flex flex-col md:invisible gap-16 font-bold text-xl md:text-2xl xl:text-3xl my-auto self-stretch items-center justify-center"
 >
-  <Social className="fixed left-2 flex flex-col gap-4" />
+  <Social className="fixed right-0 bottom-0 flex flex-row gap-4 text-frame" />
   <ul id="nav-list" class="group/list nav__list">
     <li id="nav-home" class="group nav__item">
       <a
@@ -46,7 +46,7 @@ const translateFragment = useTranslatedFragment(lang);
     </li>
   </ul>
   <a
-    class="fixed bottom-1/4 w-fit hover:text-frame cursor-pointer rounded-sm py-3 px-4 leading-5 border-2 border-frame hover:-translate-x-1 hover:-translate-y-1 hover:shadow-[3px_3px_0_0] shadow-frame transition-all duration-300 ease-in-out"
+    class="fixed bottom-1/4 w-fit hover:!text-frame cursor-pointer rounded-sm py-3 px-4 leading-5 border-2 border-frame hover:-translate-x-1 hover:-translate-y-1 hover:shadow-[3px_3px_0_0] transition-all duration-300 ease-in-out"
     href="/resume.pdf"
     target="_blank"
     data-astro-prefetch
@@ -55,18 +55,15 @@ const translateFragment = useTranslatedFragment(lang);
 </div>
 
 <style>
-  @tailwind base;
   @tailwind components;
   @tailwind utilities;
 
-  @layer base {
-    a,
-    button {
-      @apply hover:!text-selection text-frame;
-    }
-  }
-
   @layer components {
+    #menu a,
+    #menu button {
+      @apply text-frame hover:text-selection;
+    }
+
     .nav__list {
       @apply flex flex-col gap-6 items-center justify-center;
     }
@@ -96,25 +93,25 @@ const translateFragment = useTranslatedFragment(lang);
 <script>
   document.addEventListener('astro:page-load', () => {
     const content = document.querySelector('#content');
-    const sidebarToggleBtn = document.getElementById('sidebar-toggle-btn');
-    const navLinks = document.querySelectorAll('#sidebar .item__link');
+    const menuToggleBtn = document.getElementById('menu-toggle-btn');
+    const navLinks = document.querySelectorAll('#menu .item__link');
     const svgAnimation: (HTMLElement & SVGAnimationElement) | null =
       document.getElementById('reverseAnimation') as HTMLElement &
         SVGAnimationElement;
 
     navLinks?.forEach((link) => {
       link.addEventListener('click', () => {
-        content?.classList.remove('sidebar--toggle');
+        content?.classList.remove('menu--toggle');
         svgAnimation?.beginElement();
       });
     });
-    sidebarToggleBtn?.addEventListener('click', () => {
-      content?.classList.toggle('sidebar--toggle');
+    menuToggleBtn?.addEventListener('click', () => {
+      content?.classList.toggle('menu--toggle');
     });
 
     window.addEventListener('resize', () => {
       if (window.matchMedia('(min-width: 768px)').matches) {
-        content?.classList.remove('sidebar--toggle');
+        content?.classList.remove('menu--toggle');
         svgAnimation?.beginElement();
       }
     });

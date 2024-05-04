@@ -23,6 +23,9 @@ dependencies:
   '@fontsource-variable/josefin-slab':
     specifier: ^5.0.20
     version: 5.0.20
+  '@fontsource-variable/noto-sans':
+    specifier: ^5.0.5
+    version: 5.0.5
   astro:
     specifier: ^4.7.1
     version: 4.7.1(typescript@5.4.5)
@@ -701,6 +704,10 @@ packages:
 
   /@fontsource-variable/josefin-slab@5.0.20:
     resolution: {integrity: sha512-PHXqTJoDnRQD2vupoMXh6XJH2r2M1wzOIVPsIGo1Xbl9Wv66wm3r1dsEpRVyW3Djrlm1FvnmolsCWlFoisUcKw==}
+    dev: false
+
+  /@fontsource-variable/noto-sans@5.0.5:
+    resolution: {integrity: sha512-SVixgckO4DIgvFJ+vTRZEj8vTvjZceuGOhKMgnETItKELl1tHzk+ZFatSTCofPJ1zjhTwqvHrHkFeCbUGiqaRg==}
     dev: false
 
   /@humanwhocodes/config-array@0.11.14:
