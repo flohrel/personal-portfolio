@@ -33,7 +33,8 @@ export default defineConfig({
   }), sitemap(), robotsTxt(), favicons({
     masterPicture: "./src/favicon.svg",
     emitAssets: true,
-    appName: "Portfolio",
+    appName: "Florian Ohrel's portfolio",
+    appShortName: "Portfolio",
     appDescription: "Florian Ohrel's portfolio",
     dir: "auto",
     lang: "en-US",
