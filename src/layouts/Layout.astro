@@ -1,13 +1,11 @@
 ---
 import { default as Header } from '@/components/Header/Header.astro';
 import LanguagePicker from '@/components/LanguagePicker.astro';
-import Menu from '@/components/Menu.astro';
 import Social from '@/components/Social.astro';
 import '@fontsource-variable/josefin-sans';
 import '@fontsource-variable/josefin-slab';
 import '@fontsource-variable/noto-sans';
 import { SEO } from 'astro-seo';
-import ViewTransitions from 'astro/components/ViewTransitions.astro';
 import { getLangFromUrl } from '../i18n/utils';
 
 const lang = getLangFromUrl(Astro.url);
@@ -49,25 +47,23 @@ const { title } = Astro.props;
         ],
       }}
     />
-    <ViewTransitions />
   </head>
   <body class="h-dvh w-full bg-content text-mint selection:bg-selection">
     <div
       id="overlay"
-      class="fixed h-screen w-full inset-0 bg-overlay z-[99] pointer-events-none"
+      class="fixed h-full w-full inset-0 bg-overlay z-[99] pointer-events-none"
     >
     </div>
     <div
       id="content"
-      class="grid grid-cols-12 gap-4 group/content h-screen w-full"
+      class="grid grid-cols-12 gap-4 group/content h-full w-full"
     >
       <Header />
-      <Menu />
-      <main
-        class="col-start-2 col-span-10 row-start-1 row-auto z-30 w-full max-w-5xl mx-auto"
-      >
+      <main class="col-start-2 col-span-10 z-30 w-full max-w-5xl mx-auto">
         <slot />
-        <Social className={'md:flex fixed right-0 -bottom-6 flex-col gap-4'} />
+        <Social
+          className={'md:flex fixed right-0 -bottom-6 flex-col gap-4 last:after:block last:after:relative last:after:h-0 last:after:w-[1.5px] last:after:bg-mint last:after:left-3 last:after:content-[""] last:after:animate-grow'}
+        />
       </main>
       <LanguagePicker />
     </div>

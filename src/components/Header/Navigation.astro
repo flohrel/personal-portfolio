@@ -4,19 +4,22 @@ import {
   useTranslatedFragment,
   useTranslations,
 } from '../../i18n/utils';
+import Social from '@/components/Social.astro';
 
 const lang = getLangFromUrl(Astro.url);
 const t = useTranslations(lang);
 const translateFragment = useTranslatedFragment(lang);
 ---
 
-<nav id="nav__container" class="h-10">
+<nav
+  class="absolute md:relative md:flex max-md:left-0 max-md:top-24 w-full h-[calc(100dvh_-_6rem)] md:h-fit md:w-fit group-[.menu--toggle]/content:max-md:translate-x-0 max-md:translate-x-full max-md:transition-transform duration-500 ease-in-out justify-center items-center group-[.menu--toggle]/content:max-md:visible max-md:invisible text-xl"
+>
   <div
-    id="nav-bar"
-    class="flex flex-row gap-8 font-light text-base md:text-lg xl:text-xl my-auto self-stretch z-50 max-md:hidden max-md:group-[.menu--toggle]/content:flex-col opacity-0 animate-fadein transition-opacity duration-200 ease-in-out"
+    id="nav__container"
+    class="flex flex-col md:flex-row gap-8 font-light text-base h-full w-full z-50 items-center justify-center py-32"
   >
     <ul id="nav-list" class="group/list nav__list">
-      <li id="nav-home" class="group nav__item">
+      <li id="nav-home" title={t('nav.home')} class="group nav__item">
         <a
           class="item__link"
           href={translateFragment('#home')}
@@ -27,7 +30,7 @@ const translateFragment = useTranslatedFragment(lang);
         </a>
         <div class={'item__bar'}></div>
       </li>
-      <li id="nav-about" class="group nav__item">
+      <li id="nav-about" title={t('nav.about')} class="group nav__item">
         <a
           class="item__link"
           href={translateFragment('#about')}
@@ -38,7 +41,7 @@ const translateFragment = useTranslatedFragment(lang);
         </a>
         <div class={'item__bar'}></div>
       </li>
-      <li id="nav-projects" class="group nav__item">
+      <li id="nav-projects" title={t('nav.projects')} class="group nav__item">
         <a
           class="item__link"
           href={translateFragment('#projects')}
@@ -51,36 +54,40 @@ const translateFragment = useTranslatedFragment(lang);
       </li>
     </ul>
     <a
-      class="hover:text-mint cursor-pointer rounded-sm py-3 px-4 leading-5 border-2 border-mint hover:-translate-x-1 hover:-translate-y-1 hover:shadow-[3px_3px_0_0] shadow-mint transition-all duration-300 ease-in-out"
+      class="md:hover:text-mint rounded-sm py-2 px-4 border-2 md:border-mint md:hover:border-mint md:hover:shadow-mint hover:-translate-x-1 hover:-translate-y-1 hover:shadow-[3px_3px_0_0] md:shadow-mint md:text-mint [transition:transform_300ms_ease-in-out,box-shadow_300ms_ease-in-out] text-frame hover:text-frame border-frame hover:border-selection hover:shadow-frame font-normal md:font-light text-xl md:text-lg xl:text-xl"
       href="/resume.pdf"
       target="_blank"
       data-astro-reload>{t('resume')}</a
     >
   </div>
+  <Social
+    className="group-[.menu--toggle]/content:flex fixed right-0 bottom-0 flex-row gap-3"
+  />
 </nav>
 
 <style>
+  @tailwind base;
   @tailwind components;
   @tailwind utilities;
 
   @layer components {
     .nav__list {
-      @apply flex gap-6 items-center justify-center;
+      @apply flex flex-col md:flex-row gap-6 items-center justify-center grow;
     }
 
     .nav__item {
-      @apply flex flex-col [direction:rtl];
+      @apply flex flex-col h-fit w-fit [direction:rtl];
       &:hover {
         @apply [direction:ltr];
       }
     }
 
     .item__bar {
-      @apply w-0 group-hover:!w-full group-hover/list:w-0 bg-mintHover [transition:width_300ms_ease-in-out] h-[1px] group-[.item--selected]:bg-mint;
+      @apply w-0 group-hover:md:!w-full group-hover/list:w-0 bg-frame md:bg-mintHover [transition:width_300ms_ease-in-out] h-[2px] group-[.item--selected]:md:bg-mint group-hover/list:hover:bg-selection;
     }
 
     .item__link {
-      @apply block h-full text-center whitespace-nowrap group-[.item--selected]:font-bold group-[.item--selected]:pointer-events-none;
+      @apply block text-center whitespace-nowrap opacity-0 animate-fadein max-md:font-medium max-md:text-frame max-md:hover:text-selection text-xl md:text-lg xl:text-xl;
     }
   }
 
@@ -88,7 +95,10 @@ const translateFragment = useTranslatedFragment(lang);
     .item--selected {
       @apply [direction:ltr] group-hover/list:[direction:rtl] hover:![direction:ltr];
       & .item__bar {
-        @apply w-full;
+        @apply md:w-full;
+      }
+      & .item__link {
+        @apply md:font-extrabold font-black pointer-events-none;
       }
     }
   }
@@ -114,4 +124,29 @@ const translateFragment = useTranslatedFragment(lang);
 
     observer.observe(elements);
   }
+</script>
+<script>
+  const content = document.querySelector('#content');
+  const menuToggleBtn = document.getElementById('menu-toggle-btn');
+  const navLinks = document.querySelectorAll('#menu .item__link');
+  const svgAnimation: (HTMLElement & SVGAnimationElement) | null =
+    document.getElementById('reverseAnimation') as HTMLElement &
+      SVGAnimationElement;
+
+  navLinks?.forEach((link) => {
+    link.addEventListener('click', () => {
+      content?.classList.remove('menu--toggle');
+      svgAnimation?.beginElement();
+    });
+  });
+  menuToggleBtn?.addEventListener('click', () => {
+    content?.classList.toggle('menu--toggle');
+  });
+
+  window.addEventListener('resize', () => {
+    if (window.matchMedia('(min-width: 768px)').matches) {
+      content?.classList.remove('menu--toggle');
+      svgAnimation?.beginElement();
+    }
+  });
 </script>

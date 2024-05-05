@@ -56,8 +56,8 @@ export default {
       },
       animation: {
         'grow': 'grow 1s ease-out 1 200ms forwards',
-        'fadein': 'fade 150ms ease-in-out 1 0s forwards',
-        'fadeout': 'fade 150ms ease-in-out 1 0s backwards',
+        'fadein': 'fade 500ms ease-in-out 1 0s forwards',
+        'fadeout': 'fade 500ms ease-in-out 1 0s backwards',
       },
     },
   },
