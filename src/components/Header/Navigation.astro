@@ -23,7 +23,7 @@ const translateFragment = useTranslatedFragment(lang);
         <a
           class="item__link"
           href={translateFragment('#home')}
-          aria-label={'Go to ' + t('nav.home') + ' section'}
+          aria-label={t('nav.home')}
           data-astro-prefetch
         >
           {t('nav.home')}
@@ -34,7 +34,7 @@ const translateFragment = useTranslatedFragment(lang);
         <a
           class="item__link"
           href={translateFragment('#about')}
-          aria-label={'Go to ' + t('nav.about') + ' section'}
+          aria-label={t('nav.about')}
           data-astro-prefetch
         >
           {t('nav.about')}
@@ -45,7 +45,7 @@ const translateFragment = useTranslatedFragment(lang);
         <a
           class="item__link"
           href={translateFragment('#projects')}
-          aria-label={'Go to ' + t('nav.projects') + ' section'}
+          aria-label={t('nav.projects')}
           data-astro-prefetch
         >
           {t('nav.projects')}
@@ -57,6 +57,7 @@ const translateFragment = useTranslatedFragment(lang);
       class="md:hover:text-mint rounded-sm py-2 px-4 border-2 md:border-mint md:hover:border-mint md:hover:shadow-mint hover:-translate-x-1 hover:-translate-y-1 hover:shadow-[3px_3px_0_0] md:shadow-mint md:text-mint [transition:transform_300ms_ease-in-out,box-shadow_300ms_ease-in-out] text-frame hover:text-frame border-frame hover:border-frame hover:shadow-frame font-medium md:font-light text-xl md:text-lg xl:text-xl max-md:mb-4"
       href="/resume.pdf"
       target="_blank"
+      aria-label={t('resume')}
       data-astro-reload>{t('resume')}</a
     >
   </div>
@@ -72,18 +73,18 @@ const translateFragment = useTranslatedFragment(lang);
 
   @layer components {
     .nav__list {
-      @apply flex flex-col md:flex-row gap-6 items-center justify-center max-md:mb-8;
+      @apply flex flex-col md:flex-row gap-6 items-center justify-center max-md:mb-10;
     }
 
     .nav__item {
-      @apply flex flex-col h-fit w-fit [direction:rtl];
+      @apply flex flex-col h-8 w-fit [direction:rtl];
       &:hover {
         @apply [direction:ltr];
       }
     }
 
     .item__bar {
-      @apply w-0 group-hover:md:!w-full group-hover/list:md:w-0 bg-frame md:bg-mintHover [transition:width_300ms_ease-in-out] h-[2.5px] group-[.item--selected]:md:bg-mint group-hover/list:hover:bg-selection;
+      @apply w-0 group-hover:md:!w-full group-hover/list:md:w-0 bg-frame md:bg-mintHover [transition:width_300ms_ease-in-out] h-[2px] group-[.item--selected]:md:bg-mint;
     }
 
     .item__link {
@@ -133,7 +134,7 @@ const translateFragment = useTranslatedFragment(lang);
 <script>
   const content = document.querySelector('#content');
   const menuToggleBtn = document.getElementById('menu-toggle-btn');
-  const navLinks = document.querySelectorAll('#menu .item__link');
+  const navLinks = document.querySelectorAll('.item__link');
   const svgAnimation: (HTMLElement & SVGAnimationElement) | null =
     document.getElementById('reverseAnimation') as HTMLElement &
       SVGAnimationElement;
