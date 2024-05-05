@@ -16,7 +16,7 @@ const translateFragment = useTranslatedFragment(lang);
 >
   <div
     id="nav__container"
-    class="flex flex-col md:flex-row gap-8 font-light text-base h-full w-full z-50 items-center justify-center py-32"
+    class="flex flex-col flex-wrap md:flex-row md:font-light font-medium text-xl md:text-lg xl:text-xl h-full w-full z-50 items-center justify-evenly md:gap-8"
   >
     <ul id="nav-list" class="group/list nav__list">
       <li id="nav-home" title={t('nav.home')} class="group nav__item">
@@ -54,14 +54,14 @@ const translateFragment = useTranslatedFragment(lang);
       </li>
     </ul>
     <a
-      class="md:hover:text-mint rounded-sm py-2 px-4 border-2 md:border-mint md:hover:border-mint md:hover:shadow-mint hover:-translate-x-1 hover:-translate-y-1 hover:shadow-[3px_3px_0_0] md:shadow-mint md:text-mint [transition:transform_300ms_ease-in-out,box-shadow_300ms_ease-in-out] text-frame hover:text-frame border-frame hover:border-selection hover:shadow-frame font-normal md:font-light text-xl md:text-lg xl:text-xl"
+      class="md:hover:text-mint rounded-sm py-2 px-4 border-2 md:border-mint md:hover:border-mint md:hover:shadow-mint hover:-translate-x-1 hover:-translate-y-1 hover:shadow-[3px_3px_0_0] md:shadow-mint md:text-mint [transition:transform_300ms_ease-in-out,box-shadow_300ms_ease-in-out] text-frame hover:text-frame border-frame hover:border-frame hover:shadow-frame font-medium md:font-light text-xl md:text-lg xl:text-xl max-md:mb-4"
       href="/resume.pdf"
       target="_blank"
       data-astro-reload>{t('resume')}</a
     >
   </div>
   <Social
-    className="group-[.menu--toggle]/content:flex fixed right-0 bottom-0 flex-row gap-3"
+    className="group-[.menu--toggle]/content:flex fixed right-0 bottom-0 flex-col gap-3"
   />
 </nav>
 
@@ -72,7 +72,7 @@ const translateFragment = useTranslatedFragment(lang);
 
   @layer components {
     .nav__list {
-      @apply flex flex-col md:flex-row gap-6 items-center justify-center grow;
+      @apply flex flex-col md:flex-row gap-6 items-center justify-center max-md:mb-8;
     }
 
     .nav__item {
@@ -83,11 +83,11 @@ const translateFragment = useTranslatedFragment(lang);
     }
 
     .item__bar {
-      @apply w-0 group-hover:md:!w-full group-hover/list:w-0 bg-frame md:bg-mintHover [transition:width_300ms_ease-in-out] h-[2px] group-[.item--selected]:md:bg-mint group-hover/list:hover:bg-selection;
+      @apply w-0 group-hover:md:!w-full group-hover/list:md:w-0 bg-frame md:bg-mintHover [transition:width_300ms_ease-in-out] h-[2.5px] group-[.item--selected]:md:bg-mint group-hover/list:hover:bg-selection;
     }
 
     .item__link {
-      @apply block text-center whitespace-nowrap opacity-0 animate-fadein max-md:font-medium max-md:text-frame max-md:hover:text-selection text-xl md:text-lg xl:text-xl;
+      @apply block text-center whitespace-nowrap opacity-0 animate-fadein  max-md:text-frame max-md:hover:text-selection;
     }
   }
 
@@ -95,7 +95,7 @@ const translateFragment = useTranslatedFragment(lang);
     .item--selected {
       @apply [direction:ltr] group-hover/list:[direction:rtl] hover:![direction:ltr];
       & .item__bar {
-        @apply md:w-full;
+        @apply w-full;
       }
       & .item__link {
         @apply md:font-extrabold font-black pointer-events-none;
@@ -110,6 +110,7 @@ const translateFragment = useTranslatedFragment(lang);
     (entries) => {
       entries.forEach((entry) => {
         const navEntry = document.querySelector(`#nav-${entry.target.id}`);
+        console.log(entry.intersectionRatio, entry.target.id);
         if (entry.isIntersecting) {
           navEntry?.classList.add('item--selected');
         } else {
@@ -117,7 +118,11 @@ const translateFragment = useTranslatedFragment(lang);
         }
       });
     },
-    { root: null, rootMargin: '0px', threshold: 0.5 }
+    {
+      root: null,
+      rootMargin: `-40% 0px -50% 0px`,
+      threshold: [0.01],
+    }
   );
   for (let i = 0; i < sections.length; i++) {
     const elements = sections[i];

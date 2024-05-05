@@ -51,21 +51,21 @@ const { title } = Astro.props;
   <body class="h-dvh w-full bg-content text-mint selection:bg-selection">
     <div
       id="overlay"
-      class="fixed h-full w-full inset-0 bg-overlay z-[99] pointer-events-none"
+      class="fixed h-dvh w-full inset-0 bg-overlay z-[99] pointer-events-none"
     >
     </div>
     <div
       id="content"
-      class="grid grid-cols-12 gap-4 group/content h-full w-full"
+      class="grid grid-cols-12 gap-4 group/content h-dvh w-full"
     >
       <Header />
       <main class="col-start-2 col-span-10 z-30 w-full max-w-5xl mx-auto">
         <slot />
-        <Social
-          className={'md:flex fixed right-0 -bottom-6 flex-col gap-4 last:after:block last:after:relative last:after:h-0 last:after:w-[1.5px] last:after:bg-mint last:after:left-3 last:after:content-[""] last:after:animate-grow'}
-        />
       </main>
       <LanguagePicker />
+      <Social
+        className={'md:flex fixed right-0 -bottom-8 flex-col gap-4 last:after:block last:after:h-0 last:after:w-[2px] last:after:mx-auto last:after:bg-mint last:after:content-[""] last:after:animate-grow'}
+      />
     </div>
     <style is:global>
       @tailwind base;
@@ -102,7 +102,7 @@ const { title } = Astro.props;
           @apply scroll-smooth;
         }
         section {
-          @apply mx-auto my-auto min-h-screen scroll-mt-32;
+          @apply mx-auto mb-16 min-h-screen scroll-mt-32;
         }
       }
     </style>

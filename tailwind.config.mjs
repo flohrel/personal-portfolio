@@ -51,7 +51,7 @@ export default {
           'to': { 'opacity': '100' },
         },
         grow: {
-          'to': { 'height': '6rem' },
+          'to': { 'height': '2rem' },
         },
       },
       animation: {
