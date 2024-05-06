@@ -18,7 +18,7 @@ const { className } = Astro.props;
 ---
 
 <div
-  class="fixed flex gap-2 z-50 -left-2 bottom-11 md:-left-1 md:bottom-14 xl:bottom-16 xl:left-1 -rotate-90 origin-bottom opacity-0 animate-fadein"
+  class="fixed flex gap-2 z-50 -left-2 bottom-11 md:-left-1 md:bottom-14 xl:bottom-16 xl:left-1 -rotate-90 origin-bottom"
 >
   {
     Object.entries(languages).map(([lang]) => (
@@ -28,7 +28,7 @@ const { className } = Astro.props;
             (currLang === lang
               ? 'before:content-["■"]'
               : 'before:content-["□"]') +
-            ' text-sm md:text-base xl:text-lg font-other group-[.menu--toggle]/content:text-frame group-[.menu--toggle]/content:hover:text-selection group-[.menu--toggle]/content:font-medium transition-colors duration-200 ease-in-out' +
+            ' text-sm md:text-base xl:text-lg font-other group-[.menu--toggle]/content:text-frame group-[.menu--toggle]/content:hover:text-selection group-[.menu--toggle]/content:font-semibold transition-[colors,_font-weight] group-[.menu--toggle]/content:delay-100 delay-0 ease-in-out duration-75' +
             (className || '')
           }
           href={translatePath(`/${route || ''}`, lang)}

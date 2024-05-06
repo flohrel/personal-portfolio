@@ -59,13 +59,16 @@ const { title } = Astro.props;
       class="grid grid-cols-12 gap-4 group/content h-dvh w-full"
     >
       <Header />
+      <div
+        id="menu-overlay"
+        class="fixed col-start-1 col-span-full w-screen h-screen bg-overlay2 backdrop-blur z-40 group-[.menu--toggle]/content:max-md:translate-x-0 translate-x-full group-[.menu--toggle]/content:max-md:translate-y-0 -translate-y-full flex flex-col opacity-0 group-[.menu--toggle]/content:opacity-100 gap-16 items-center justify-center [transition:transform_300ms_cubic-bezier(0.22,_1,_0.36,_1),opacity_300ms_cubic-bezier(0.22,_1,_0.36,_1)]"
+      >
+      </div>
       <main class="col-start-2 col-span-10 z-30 w-full max-w-5xl mx-auto">
         <slot />
       </main>
       <LanguagePicker />
-      <Social
-        className={'md:flex fixed right-0 -bottom-8 flex-col gap-4 last:after:block last:after:h-0 last:after:w-[2px] last:after:mx-auto last:after:bg-mint last:after:content-[""] last:after:animate-grow'}
-      />
+      <Social />
     </div>
     <style is:global>
       @tailwind base;
