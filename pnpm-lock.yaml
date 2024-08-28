@@ -56,7 +56,7 @@ importers:
         version: 1.1.22
       '@iconify-json/line-md':
         specifier: ^1.1.38
-        version: 1.1.40
+        version: 1.1.41
       '@iconify-json/material-symbols':
         specifier: ^1.1.85
         version: 1.1.89
@@ -465,8 +465,8 @@ packages:
   '@iconify-json/fa6-brands@1.1.22':
     resolution: {integrity: sha512-a7x0hTjNI/cQ1XFyRQCyFfXJbYboYDRSmxeNgImRi8WwREDi00/U1e2WH+Xc4zBDFixBj/PQ5VOfCDaNy2ELTw==}
 
-  '@iconify-json/line-md@1.1.40':
-    resolution: {integrity: sha512-czbnFDIQfQyrC7HjFCJbHvmXEliwNKFBk49X/q/yOfIgQmDDc10sd/KXlxEgGW2iu3gJ98/WKLYDZxoWeAhv2Q==}
+  '@iconify-json/line-md@1.1.41':
+    resolution: {integrity: sha512-5AuWuz570fxof+a/uIYNu78O4ZENa5kIDL3EFgB9xq/wK3ZX71KtuGOQEf7vXk4S1EIV6KIl7k8+ypGG7zkpgg==}
 
   '@iconify-json/material-symbols@1.1.89':
     resolution: {integrity: sha512-lG/eoYGbXduksHNirl4eQ3Yh0mWX85WwmQgBjz4ebHp1g5QVfEK0W+0K83p9F0itiDXlCHcPwhFz4GHsPiCbiA==}
@@ -3826,7 +3826,7 @@ snapshots:
     dependencies:
       '@iconify/types': 2.0.0
 
-  '@iconify-json/line-md@1.1.40':
+  '@iconify-json/line-md@1.1.41':
     dependencies:
       '@iconify/types': 2.0.0
 
