@@ -59,7 +59,7 @@ importers:
         version: 1.1.41
       '@iconify-json/material-symbols':
         specifier: ^1.1.85
-        version: 1.1.89
+        version: 1.2.0
       '@iconify-json/mingcute':
         specifier: ^1.1.18
         version: 1.1.20
@@ -468,8 +468,8 @@ packages:
   '@iconify-json/line-md@1.1.41':
     resolution: {integrity: sha512-5AuWuz570fxof+a/uIYNu78O4ZENa5kIDL3EFgB9xq/wK3ZX71KtuGOQEf7vXk4S1EIV6KIl7k8+ypGG7zkpgg==}
 
-  '@iconify-json/material-symbols@1.1.89':
-    resolution: {integrity: sha512-lG/eoYGbXduksHNirl4eQ3Yh0mWX85WwmQgBjz4ebHp1g5QVfEK0W+0K83p9F0itiDXlCHcPwhFz4GHsPiCbiA==}
+  '@iconify-json/material-symbols@1.2.0':
+    resolution: {integrity: sha512-g/a+Z5SE5GyNu8EmRKidRX0D6odws6sz68PhXvCWBK1YLCcf3XDBWZoWUyOQ/jlyUsvGu1QkDXBxq5XYSFPWXQ==}
 
   '@iconify-json/mingcute@1.1.20':
     resolution: {integrity: sha512-cLrKrnb9gsi+G6bRtqoFB0KcZnuD/f+p1mwmCTOJdfT8XUFOeZ/ObyBDcAsD2alwL1JmwvqRF08RDW0pfWZAnA==}
@@ -3830,7 +3830,7 @@ snapshots:
     dependencies:
       '@iconify/types': 2.0.0
 
-  '@iconify-json/material-symbols@1.1.89':
+  '@iconify-json/material-symbols@1.2.0':
     dependencies:
       '@iconify/types': 2.0.0
 
