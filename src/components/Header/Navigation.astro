@@ -54,7 +54,7 @@ const translateFragment = useTranslatedFragment(lang);
     </ul>
     <a
       class="md:hover:text-mint rounded-sm py-2 px-4 border-2 md:border-mint md:hover:border-mint md:hover:shadow-mint hover:-translate-x-1 hover:-translate-y-1 hover:shadow-[3px_3px_0_0] md:shadow-mint md:text-mint [transition:transform_300ms_ease-in-out,box-shadow_300ms_ease-in-out] text-frame hover:text-frame border-frame hover:border-frame hover:shadow-frame font-medium md:font-light text-xl md:text-lg xl:text-xl max-md:mb-4"
-      href="/resume.pdf"
+      href={`/resume_${lang}.pdf`}
       target="_blank"
       aria-label={t('resume')}
       data-astro-reload>{t('resume')}</a
